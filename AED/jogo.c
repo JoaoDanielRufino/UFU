@@ -14,7 +14,7 @@ Player* jogo(List **li, Queue* q, int comeco, int fim){
         printf("\nRodada[%d]:\n", r++);
         for(i=0; i<numjog; i++){
             if(not_visited_path(li[pos_atual],q->at)){
-                dado = random(li[pos_atual],q->at,aux);
+                dado = random_number(li[pos_atual],q->at,aux);
                 printf("Nome: %s, Pos atual: %c, Dado = %d, ", q->at->name,(char) pos_atual+65,dado);
                 aux = li[pos_atual]->head;
                 for(j=1; j<dado; j++)
@@ -37,7 +37,7 @@ Player* jogo(List **li, Queue* q, int comeco, int fim){
     }
 }
 
-int random(List* li, Player* pl, Node* aux){
+int random_number(List* li, Player* pl, Node* aux){
     int dado,i,pos;
     while(1){
         dado = 1 + rand()%li->size;
