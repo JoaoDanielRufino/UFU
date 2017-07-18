@@ -5,7 +5,7 @@
 
 Player* jogo(List **li, Queue* q, int comeco, int fim);
 
-int random(List* li, Player* pl, Node* aux);
+int random_number(List* li, Player* pl, Node* aux);
 
 int not_visited_path(List* li, Player* pl);
 
