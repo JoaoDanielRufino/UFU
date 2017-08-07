@@ -16,7 +16,7 @@ pegar([X|Y],Z,[L1|L]):-
     nesimo(X,L1,Z),
     pegar(Y,Z,L).
 
-%Remove the first ocurrence of an element. 
+%Remove the first occurrence of an element. 
 retirar1(_,[],[]).
 retirar1(X,[X|Y],Y):-!.
 retirar1(X,[Y|Z],[Y|L]):-
