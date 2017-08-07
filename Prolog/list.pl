@@ -23,7 +23,7 @@ retirar1(X,[Y|Z],[Y|L]):-
     X\=Y,
     retirar1(X,Z,L).
 
-%Insertion for the permutation use.
+%Insertion for the permutation rule.
 insert(X,[],[X]):-!.
 insert(X,[Y|Z],[X,Y|Z]).
 insert(X,[Y|Z],[Y|L]):-
@@ -153,19 +153,19 @@ interseccao([X|Y],[W|Z],[X|L]):-
 interseccao([_|Y],[W|Z],L):-
     interseccao(Y,[W|Z],L).
 
-%Sum.
+%Calculate the sum.
 soma([],0).
 soma([X|Y],N):-
     soma(Y,N1),
     N is N1+X.
 
-%Average.
+%Calculate the average.
 media([X|Y],N):-
     noelement([X|Y],E),
     soma([X|Y],S),
     N is S/E.
 
-%Palindrome.
+%Check if its Palindrome.
 palindromo([X|Y]):-
     invert([X|Y],L),
     iguais([X|Y],L).
