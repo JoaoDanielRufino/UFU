@@ -29,7 +29,7 @@ delete N em [X|Y] gera [X|L]:-
 :-op(600,fy,mdc).
 :-op(500,fy,entre).
 
-%Calculate the Maximum Common Divisor.
+%Calculate the Greatest Common Divisor.
 mdc entre X e X gera X.
 mdc entre X e Y gera D:-
     X<Y,
@@ -41,7 +41,7 @@ mdc entre X e Y gera D:-
 
 :-op(600,fy,mdc2).
 
-%Another way to calculate the Maximum Common Divisor.
+%Another way to calculate the Greatest Common Divisor.
 mdc2 entre X e 0 gera X:-!.
 mdc2 entre X e Y gera D:-
     X>=Y,
@@ -53,7 +53,7 @@ mdc2 entre X e Y gera D:-
 
 :-op(600,fy,mmc).
 
-%Calculate the Minimum Common Divisor.
+%Calculate the Lowest Common Multiple.
 mmc entre X e Y gera D:-
     mdc2 entre X e Y gera D1,!,
     D is X*Y/D1.
