@@ -79,24 +79,24 @@ lcm1 a b |a == 0 || b == 0 = 0
 
 makeAscendant :: Int -> Int -> Int -> (Int,Int,Int)
 makeAscendant x y z = if(smallerOfThree x y z == x) then
-                         if(y<=z) then (x,y,z)
+                         if(y <= z) then (x,y,z)
                          else (x,z,y)
                       else if(smallerOfThree x y z == y) then
-                         if(x<=z) then (y,x,z)
+                         if(x <= z) then (y,x,z)
                          else (y,z,x)
                       else
-                         if(x<=y) then (z,x,y)
+                         if(x <= y) then (z,x,y)
                          else (z,y,x)
 
 makeDecrescent :: Int -> Int -> Int -> (Int,Int,Int)
 makeDecrescent x y z = if(greaterOfThree x y z == x) then
-                         if(y>=z) then (x,y,z)
+                         if(y >= z) then (x,y,z)
                          else (x,z,y)
                       else if(greaterOfThree x y z == y) then
-                         if(x>=z) then (y,x,z)
+                         if(x >= z) then (y,x,z)
                          else (y,z,x)
                       else
-                         if(x>=y) then (z,x,y)
+                         if(x >= y) then (z,x,y)
                          else (z,y,x)
 
 type Point  = (Double,Double)
