@@ -307,3 +307,8 @@ mySort l = auxMySort l []
 auxMySort :: [Int] -> [Int] -> [Int]
 auxMySort [] l = l
 auxMySort (x:xs) l = auxMySort xs (tailInsertSorted x l)
+
+concatenate :: [Int] -> [Int] -> [Int]
+concatenate x [] = x
+concatenate [] y = y
+concatenate (x:xs) y = x:concatenate xs y
