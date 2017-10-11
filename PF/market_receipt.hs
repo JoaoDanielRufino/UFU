@@ -47,18 +47,15 @@ formatLine (name,price) = name ++ myReplicate leng ++ formatCents price ++ "\n"
          leng = lineSize - length (name ++ formatCents price)
 
 myReplicate :: Int -> String
-myReplicate 0 = ""
+myReplicate 0 = []
 myReplicate n = "." ++ myReplicate (n-1)
 
 formatLines :: Receipt -> String
-formatLines re = aux2FormatLines(auxFormatLines re)
+formatLines re = auxFormatLines (map (formatLine) re)
 
-auxFormatLines :: Receipt -> [String]
-auxFormatLines re = map (formatLine) re
-
-aux2FormatLines :: [String] -> String
-aux2FormatLines [] = []
-aux2FormatLines (x:xs) = x ++ aux2FormatLines xs
+auxFormatLines :: [String] -> String
+auxFormatLines [] = []
+auxFormatLines (x:xs) = x ++ auxFormatLines xs
 
 formatReceipt :: CodList -> String
 formatReceipt re = formatLines(makeReceipt re)
