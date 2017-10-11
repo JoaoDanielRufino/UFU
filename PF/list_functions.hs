@@ -312,3 +312,12 @@ concatenate :: [Int] -> [Int] -> [Int]
 concatenate x [] = x
 concatenate [] y = y
 concatenate (x:xs) y = x:concatenate xs y
+
+nthFirstSqrt :: Integer -> Integer
+nthFirstSqrt n = foldr1 (+) (map (^2) [1..n])
+
+sumSqrtEven :: [Integer] -> Integer
+sumSqrtEven l = foldr1 (+) (map (^2) (filter (even) l))
+
+sumSqrtOdd :: [Integer] -> Integer
+sumSqrtOdd l = foldr1 (+) (map (^2) (filter (odd) l))
