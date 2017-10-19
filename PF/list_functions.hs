@@ -102,6 +102,15 @@ primes n = [x | x <- [1..n], isprime x]
 filterPrimes :: [Int] -> [Int]
 filterPrimes l = filter (isprime) l
 
+recursiveIsPrime :: Int -> Bool
+recursiveIsPrime n = auxRecursiveIsPrime n n 0
+
+auxRecursiveIsPrime :: Int -> Int -> Int -> Bool
+auxRecursiveIsPrime n 0 count |count == 2 = True
+                              |otherwise = False
+auxRecursiveIsPrime n aux count |mod n aux == 0 = auxRecursiveIsPrime n (aux-1) (count+1)
+                                |otherwise = auxRecursiveIsPrime n (aux-1) count
+
 intersection :: [Int] -> [Int] -> [Int]
 intersection [] y = []
 intersection x [] = []
@@ -158,10 +167,16 @@ listOfOdd2 l = [x | x <- l, mod x 2 /= 0]
 
 isOdd :: Int -> Bool
 isOdd x |mod x 2 /= 0 = True
-         |otherwise = False
+        |otherwise = False
 
 listOfOdd3 :: [Int] -> [Int]
 listOfOdd3 l = filter (isOdd) l
+
+listOfEvenOdd :: [Int] -> ([Int],[Int])
+listOfEvenOdd l = (filter (isEven) l, filter (isOdd) l)
+
+listOfEvenOdd2 :: [Int] -> ([Int],[Int])
+listOfEvenOdd2 l = (listOfEven l, listOfOdd l)
 
 nth :: Int -> [Int] -> Int
 nth _ [] = -1
@@ -302,7 +317,11 @@ auxInsertSorted n (x:xs) l |n <= x = l ++ [n] ++ (x:xs)
                            |otherwise = auxInsertSorted n xs (addTail x l)
 
 mySort :: [Int] -> [Int]
-mySort l = auxMySort l []
+mySort [] = []
+mySort (x:xs) = insertSorted x (mySort xs)
+
+tailMySort :: [Int] -> [Int]
+tailMySort l = auxMySort l []
 
 auxMySort :: [Int] -> [Int] -> [Int]
 auxMySort [] l = l
