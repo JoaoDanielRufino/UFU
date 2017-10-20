@@ -219,7 +219,7 @@ maxAndMin :: [Int] -> (Int,Int)
 maxAndMin l = (maxElement l, minElement l)
 
 findMin2 :: [Int] -> Int
-findMin2 [x] = x;
+findMin2 [x] = x
 findMin2 (x:xs) |x < findMin2 xs = x
                 |otherwise = findMin2 xs
 
