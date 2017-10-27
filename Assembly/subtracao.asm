@@ -22,7 +22,7 @@
 	
 	move $t1,$v0 #Move $v0 para $t1, para armazenar o valor lido.
 	
-	sub $t2,$t0,$t1 #Subtrai o valor de $to com $t1.
+	sub $t2,$t0,$t1 #Subtrai o valor de $t0 com $t1.
 	
 	li $v0,4 #Impressao de string.
 	la $a0,Result #Mostra a string de Result.
