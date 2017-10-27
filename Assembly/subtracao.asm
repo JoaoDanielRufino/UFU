@@ -14,7 +14,7 @@
 	move $t0,$v0 #Move $v0 para $t0, para armazenar o valor lido.
 	
 	li $v0,4 #Impressao de string.
-	la $a0,Num1 #Mostra a string de Num2.
+	la $a0,Num2 #Mostra a string de Num2.
 	syscall
 	
 	li $v0,5 #Le um intreiro.
