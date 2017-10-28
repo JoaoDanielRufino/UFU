@@ -30,7 +30,7 @@
 	syscall
 	
 	li $v0,1 #Impressao de inteiros.
-	move $a0,$t2 #Move $s3 para $a0 para printar o resultado.
+	move $a0,$t2 #Move $t2 para $a0 para printar o resultado.
 	syscall
 	
 	mfhi $t6 #Modulo da divisao entre $t0 e $t1
@@ -40,5 +40,5 @@
 	syscall
 	
 	li $v0,1 #Impressao de inteiros.
-	move $a0,$t6 #Move $s3 para $a0 para printar o resultado.
+	move $a0,$t6 #Move $t6 para $a0 para printar o resultado.
 	syscall
