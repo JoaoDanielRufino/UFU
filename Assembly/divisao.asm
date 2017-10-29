@@ -42,3 +42,6 @@
 	li $v0,1 #Impressao de inteiros.
 	move $a0,$t6 #Move $t6 para $a0 para printar o resultado.
 	syscall
+
+	li $v0,10 #Comando de exit.
+	syscall
