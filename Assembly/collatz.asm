@@ -18,7 +18,7 @@ leNatural:
 	
 	move $t0, $v0 #Armazena o conteudo de $v0 em $t0.
 		
-	bgt $t0, 0, loop
+	bgtz $t0, loop #$t0 > 0 ? loop : leNatural
 	
 	li $v0, 4 
 	la $a0, Erro #Imprime a frase.
@@ -36,7 +36,7 @@ loop:
 	syscall
 	
 	jal verificaNumero
-	bgt $t0, 1, loop #$t0 < $t3 ? sai do loop : loop
+	bgt $t0, 1, loop #$t0 > 1 ? loop : sai do loop
 	
 	li $v0, 1
 	move $a0, $t0 #Impressao de inteiro.
@@ -57,6 +57,6 @@ numPar:
 	jr $ra #Retorna.
 	
 numImpar:
-	mul $t0, $t0, 3 #Armazena a multiplicacao $t0 * $t1.
+	mul $t0, $t0, 3 #Armazena a multiplicacao $t0 * 3.
 	addi $t0, $t0, 1 #Armazena a soma $t0 + 1.
 	jr $ra #Retorna.
