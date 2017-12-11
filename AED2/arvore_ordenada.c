@@ -84,7 +84,7 @@ int ord_remove(Tree **tr, int data){
 
     Tree *aux = (*tr)->left;
     while(aux->right != NULL)
-        aux = aux->left;
+        aux = aux->right;
 
     (*tr)->info = aux->info;
     return ord_remove(&(*tr)->left, aux->info.data);
