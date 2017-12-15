@@ -55,3 +55,16 @@ fazLista n |n == 0 = return []
                            x <- readLn
                            lista <- fazLista (n-1)
                            return (x:lista)
+
+somaReais :: IO ()
+somaReais = do putStr "Digite a quantidade de numeros: "
+               n <- readLn
+               soma <- somaR n
+               putStrLn ("A soma eh: " ++ show soma)
+
+somaR :: Int -> IO (Double)
+somaR n |n == 0 = return (0.0)
+        |otherwise = do putStr "Digite um numero: "
+                        x <- readLn :: IO (Double)
+                        soma <- somaR (n-1)
+                        return (x + soma)
