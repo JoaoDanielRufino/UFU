@@ -1,3 +1,8 @@
+/*
+Made by: Joao Daniel A. Rufino
+         Pedro Henrique Faria Teixeira
+*/
+
 package truco;
 
 import javax.swing.*;
