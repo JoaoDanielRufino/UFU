@@ -1,1 +1,1 @@
-# UFU
+# Universidade Federal de Uberlândia
