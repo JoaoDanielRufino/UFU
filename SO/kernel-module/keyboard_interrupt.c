@@ -1,3 +1,9 @@
+/* Este módulo, desliga o computador do usuário após apertadas e seguradas, 
+ * as teclas "Ctrl", "Alt", e "Enter". Se ao invés de "Enter", for pressionado
+ * "Backspace", deverá informar um tempo desejado em segundos para o desligamento
+ * do sistema, sendo confirmado após o "Enter" ser pressionado.
+ */
+
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/interrupt.h>
