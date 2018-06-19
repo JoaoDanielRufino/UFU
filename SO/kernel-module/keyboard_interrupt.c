@@ -69,7 +69,7 @@ static irqreturn_t my_interrupt(int irq, void *dev_id){
     if(wq && scancode == 0x1c){ // Iniciando o tempo para desligamento apos apertar Enter
       unsigned int t = msecs_to_jiffies(sec_to_shutdown*1000);
       queue_delayed_work(wq, &my_work, t); // Colocando a estrutura my_work para ser executada apos o tempo t
-      cancel = 1
+      cancel = 1;
     }
   }
  
