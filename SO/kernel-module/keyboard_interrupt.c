@@ -1,9 +1,3 @@
-/* Este módulo, desliga o computador do usuário após apertadas e seguradas, 
- * as teclas "Ctrl", "Alt", e "Enter". Se ao invés de "Enter", for pressionado
- * "Backspace", deverá informar um tempo desejado em segundos para o desligamento
- * do sistema, sendo confirmado após o "Enter" ser pressionado.
- */
-
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/interrupt.h>
@@ -26,6 +20,7 @@ static unsigned int backspace = 0;
 static unsigned int enter = 0;
 
 static unsigned int time_flag = 0;
+static unsigned int cancel = 0;
 static unsigned int my_map[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0}; // Estrutura para mapear os numeros do teclado
 static unsigned int sec_to_shutdown = 0;
 
@@ -40,7 +35,7 @@ static irqreturn_t my_interrupt(int irq, void *dev_id){
   // Identificando o codigo hexadecimal da tecla apertada ou solta
   scancode = inb(0x60);
  
-  if(!time_flag){
+  if(!time_flag && !cancel){
     if(scancode == 0x1d)
       ctrl = 1;
     else if(scancode == 0x38)
@@ -61,18 +56,20 @@ static irqreturn_t my_interrupt(int irq, void *dev_id){
       enter = 0;
     }
     else if(ctrl && alt && enter){ // Desligar direto
-       kernel_power_off();
+       unsigned int t = msecs_to_jiffies(10); // Colocando um tempo bem pequeno para nao travar o pc
+       queue_delayed_work(wq, &my_work, t);
+       cancel = 1;
     }
   }
 
-  else if(time_flag){
+  else if(time_flag && !cancel){
     if(scancode >= 0x02 && scancode <= 0x0b)
       sec_to_shutdown = (sec_to_shutdown * 10) + my_map[scancode-2]; // Recebendo os numeros digitados
 
     if(wq && scancode == 0x1c){ // Iniciando o tempo para desligamento apos apertar Enter
       unsigned int t = msecs_to_jiffies(sec_to_shutdown*1000);
       queue_delayed_work(wq, &my_work, t); // Colocando a estrutura my_work para ser executada apos o tempo t
-      //time_flag = 0; // Variavel para debug
+      cancel = 1
     }
   }
  
