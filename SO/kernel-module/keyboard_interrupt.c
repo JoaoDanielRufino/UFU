@@ -16,7 +16,7 @@ DECLARE_DELAYED_WORK(my_work, wq_handler); // Criando a estrutura delayed work
 
 static unsigned int ctrl = 0;
 static unsigned int alt = 0;
-static unsigned int backspace = 0;
+static unsigned int space = 0;
 static unsigned int enter = 0;
 
 static unsigned int time_flag = 0;
@@ -25,7 +25,7 @@ static unsigned int my_map[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0}; // Estrutura pa
 static unsigned int sec_to_shutdown = 0;
 
 static void wq_handler(struct work_struct *w){ // Funcao a ser chamada pela delayed work queue
-  kernel_power_off();
+  orderly_poweroff(false);
 }
 
 // Funcao ao ser executada para cada tecla pressionada ou solta
@@ -40,18 +40,18 @@ static irqreturn_t my_interrupt(int irq, void *dev_id){
       ctrl = 1;
     else if(scancode == 0x38)
       alt = 1;
-    else if(scancode == 0x0e)
-      backspace = 1;
+    else if(scancode == 0x39)
+      space = 1;
     else if(scancode == 0x1c)
       enter = 1;
     else{
       ctrl = 0;
       alt = 0;
-      backspace = 0;
+      space = 0;
       enter = 0;
     }
 
-    if(ctrl && alt && backspace){ // Desligar apos um tempo
+    if(ctrl && alt && space){ // Desligar apos um tempo
       time_flag = 1;
       enter = 0;
     }
