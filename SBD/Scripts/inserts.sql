@@ -44,13 +44,6 @@ insert into selecao values(default, 'Suica', 9,9);
 --10
 insert into selecao values(default, 'Russia', 10,10);
 
-drop table selecao cascade;
-select * from selecao;
-
-
-
-select * from selecao;
-
 
 			/*JOGADOR*/
 --1
@@ -75,12 +68,8 @@ insert into jogador values(default, 'Ragnar', 20, 'Suico', 4, 0);
 --10
 insert into jogador values(default, 'Vladmir', 18, 'Russo', 5, 1);
 
-select * from jogador;
-drop table jogador cascade;
 
 				/*CIDADES*/
-
-select * from cidade;
 
 --1
 insert into cidade values (default,'São Petersburgo');
@@ -107,9 +96,6 @@ insert into cidade values (default,'Níjni Novgorod');
 
 					/*ESTAGIOS*/
 
-insert into estadio values(default, 1,'E.S.Petesburgo',67000);
-SELECT * FROM CIDADE;
-
 --1
 insert into estadio values (default, 4,'Lujniki',80000);
 --2
@@ -135,8 +121,6 @@ insert into estadio values(default, 6,'Arena Volgogrado',45000);
 
 							/*PARTIDAS*/
 
-					select * from partida;
--- idpartida idcidade idestadio data horainivio idselecao1 idselecao2
 --1
 insert into partida values (default,1,1,'2018-06-23','18:30',1,2);
 --2
@@ -158,12 +142,7 @@ insert into partida values (default,3,9,'2018-06-30','13:30',1,10);
 --10
 insert into partida values (default,7,10,'2018-06-28','14:00',2,6);
 
-update partida set data = '2018-06-28' where idpartida = 10;
-
 	/*NARRADORES*/
-SELECT * FROM narradores
-;
-
 --1
 insert into narradores values (default,1,'Galvão Bueno','Brasileiro','Globo');
 --2
@@ -206,7 +185,6 @@ insert into juiz values(default,'Vicente','Chileno',8);
 insert into juiz values(default,'Pablo','Argentino',9);
 --10
 insert into juiz values(default,'Lorenzo','Espanhol',10);
-select * from juiz;
 
 							/*HISTORICO_PARTIDAS*/
 --1
@@ -230,10 +208,8 @@ insert into historico_partidas values(default,1,'Brasil',5,'Russia',0);
 --10
 insert into historico_partidas values(default,1,'Portugal',1,'Argentina',0);
 
-select * from selecao;
 
 					/*HOSPEDAGENS*/
-select * from hospedagem;
 
 --1
 insert into hospedagem values (default,'Von del Piza',1,'5 estrelas',1);
@@ -257,7 +233,6 @@ insert into hospedagem values (default,'Bones',8,'5 estrelas',5);
 insert into hospedagem values (default,'Don Pierre',9,'4.5 estrelas',9);
 
 						/*PATROCINADORES*/
-select * from patrocinador;
 
 --1
 insert into patrocinador values (default,'Coca-Cola');
@@ -282,7 +257,6 @@ insert into patrocinador values (default,'Zup');
 
 						/*PATROCINA*/
 
-select * from patrocina;
 
 --1
 insert into patrocina values (default,5,1);
@@ -307,7 +281,6 @@ insert into patrocina values (default,8,10);
 
 				/*INGRESSO*/
 
-select * from ingresso;
 
 --1
 insert into ingresso values (default,'GamersClub',100.75,20000,1,'Primeiro');
@@ -332,7 +305,6 @@ insert into ingresso values (default,'Submarino',210.25,45000,10,'Segundo');
 
 				/*PESSOAS*/ 
 
-select * from pessoa;
 --1
 insert into pessoa values (default,'Marcos Jackson');
 --2
