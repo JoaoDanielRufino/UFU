@@ -3,6 +3,7 @@
 using namespace std;
 
 vector< vector< pair<int,int> > > grafo;
+vector<int> caminho;
 vector<bool> visitado;
 vector<string> mymap;
 
@@ -11,7 +12,7 @@ void iniciaGrafo() {
   FILE *rotas = fopen("grafo.txt", "r");
 
   if(rotas == NULL) {
-    cout << "Erro ao abrir o arquivo" << endl;
+    cout << "Erro ao abrir o arquivo" << endl; 
     return;
   }
 
@@ -44,9 +45,15 @@ void iniciaMapeamento() {
 void dfs(int origem, int destino, int peso) {
   visitado[origem] = true;
 
-  cout << mymap[origem] << " -> ";
+  caminho.push_back(origem);
 
   if(origem == destino) {
+    for(int i = 0; i < caminho.size(); i++) {
+      if(i < caminho.size()-1)
+        cout << mymap[caminho[i]] << " -> ";
+      else
+        cout << mymap[caminho[i]] << endl;
+    }
     cout << peso << "Km" << endl;
     exit(0);
   }
@@ -57,6 +64,8 @@ void dfs(int origem, int destino, int peso) {
     if(!visitado[adj])
       dfs(adj, destino, peso + pesoCaminho);
   }
+
+  caminho.pop_back();
 }
 
 int main() {
