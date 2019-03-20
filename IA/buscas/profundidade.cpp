@@ -78,7 +78,7 @@ int main() {
 
   cout << "Digite a cidade de origem: ";
   getline(cin, origem);
-  cout << "Digite a cidade de distino: ";
+  cout << "Digite a cidade de destino: ";
   getline(cin, destino);
 
   for(int i = 0; i < mymap.size(); i++) {
