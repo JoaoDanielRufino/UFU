@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 
-#define LIMITE_DFS 3
+#define LIMITE_DFS 4
 
 using namespace std;
 
@@ -60,7 +60,7 @@ bool dfs(int origem, int destino, int peso, int limite) {
         cout << mymap[caminho[i]] << endl;
     }
     cout << peso << "Km" << endl;
-    return false;
+    return true;
   }
 
   for(int i = 0; i < grafo[origem].size(); i++) {
@@ -72,6 +72,7 @@ bool dfs(int origem, int destino, int peso, int limite) {
   }
 
   caminho.pop_back();
+  return false;
 }
 
 int main() {
@@ -105,7 +106,9 @@ int main() {
   }
 
   cout << "\nCaminho em profundidade:" << endl;
-  dfs(inicio, fim, 0, LIMITE_DFS);
+  if(!dfs(inicio, fim, 0, LIMITE_DFS)) {
+    cout << "Nao foi possivel chegar ao distino com tal limite de busca" << endl;
+  }
 
   return 0;
 }
