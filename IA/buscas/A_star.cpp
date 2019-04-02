@@ -52,7 +52,7 @@ void mostraCaminho(int origem, int destino, vector<int> caminho) {
   }
 }
 
-void dikstra(int origem, int destino) {
+void a_star(int origem, int destino) {
   priority_queue< pair<int,int>, vector<pair<int,int> >, greater<pair<int,int> > > pq;
   vector<int> caminho(grafo.size());
   vector<int> dist(grafo.size(), INT_MAX);
@@ -102,7 +102,7 @@ int main() {
   }
 
   cout << "\nCaminho em profundidade:" << endl;
-  dikstra(inicio, 12);
+  a_star(inicio, 12);
 
   return 0;
 }
