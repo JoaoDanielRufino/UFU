@@ -1,6 +1,6 @@
 /*
  * Este problema entra em um loop infinito,
- * pois ele atinge um mminimo local e nao sai dele
+ * pois ele atinge um minimo local
  */
 
 #include <bits/stdc++.h>
