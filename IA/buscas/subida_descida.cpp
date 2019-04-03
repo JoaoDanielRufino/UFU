@@ -23,7 +23,7 @@ int calculaColisoes(vector<int> mat) {
 
 bool solve(vector<int> &mat) {
     vector<int> aux(mat);
-    int colisoes, posCol, posLinha, minColisoes = INT_MAX;
+    int colisoes, posDama, posLinha, minColisoes = INT_MAX;
 
     for(int i = 0; i < SIZE; i++) {
         for(int j = 0; j < SIZE; j++) {
@@ -31,13 +31,13 @@ bool solve(vector<int> &mat) {
             colisoes = calculaColisoes(aux);
             if(colisoes < minColisoes && mat[i] != j) {
                 minColisoes = colisoes;
-                posLinha = i;
-                posCol = j;
+                posDama = i;
+                posLinha = j;
             }
         }
     }
 
-    mat[posLinha] = posCol;
+    mat[posDama] = posLinha;
     colisoes = calculaColisoes(mat);
 
     for(int i = 0; i < SIZE; i++) {
@@ -58,6 +58,10 @@ int main() {
     cout << "Comecando" << endl;
 
     solve(mat);
+
+    for(int i = 0; i < SIZE; i++) {
+        cout << mat[i] << " ";
+    }
 
     cout << endl;
 
