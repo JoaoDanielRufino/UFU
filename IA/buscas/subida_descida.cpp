@@ -59,10 +59,6 @@ int main() {
 
     solve(mat);
 
-    for(int i = 0; i < SIZE; i++) {
-        cout << mat[i] << " ";
-    }
-
     cout << endl;
 
     return 0;
