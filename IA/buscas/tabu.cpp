@@ -21,7 +21,7 @@ bool solve(vector<int> &mat, int prev) {
     int colisoes, posDama, posLinha, minColisoes = INT_MAX;
 
     for(int i = 0; i < SIZE; i++) {
-        if(prev == i) // Avancando duas posicoes se a dama anterior foi utitlizada
+        if(prev == i) // Avancando duas posicoes se a dama na posicao "i" foi utitlizada
             i += 2;
         if(i < SIZE) {
             for(int j = 0; j < SIZE; j++) {
