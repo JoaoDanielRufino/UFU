@@ -18,7 +18,7 @@ int calculaColisoes(vector<int> mat) {
 
 bool solve(vector<int> &mat, int prev) {
     vector<int> aux(mat);
-    int colisoes, posCol, posLinha, minColisoes = INT_MAX;
+    int colisoes, posDama, posLinha, minColisoes = INT_MAX;
 
     for(int i = 0; i < SIZE; i++) {
         if(prev == i) // Avancando duas posicoes se a dama anterior foi utitlizada
@@ -29,14 +29,14 @@ bool solve(vector<int> &mat, int prev) {
                 colisoes = calculaColisoes(aux);
                 if(colisoes < minColisoes && mat[i] != j) {
                     minColisoes = colisoes;
-                    posLinha = i;
-                    posCol = j;
+                    posDama = i;
+                    posLinha = j;
                 }
             }
         }
     }
 
-    mat[posLinha] = posCol;
+    mat[posDama] = posLinha;
     colisoes = calculaColisoes(mat);
 
     for(int i = 0; i < SIZE; i++)
