@@ -7,6 +7,7 @@ public class Populacao {
     private Tabuleiro tabuleiros[];
     private ArrayList<Tabuleiro> matingPool;
     private int geracao;
+    private boolean end;
     
     public Populacao() {
         int popSize = AlgoritmoGenetico.POP_QTD;
@@ -16,6 +17,7 @@ public class Populacao {
         }
         this.matingPool = new ArrayList<>();       
         this.geracao = 0;
+        this.end = false;
     }
     
     public void calculaFitness() {
@@ -24,10 +26,22 @@ public class Populacao {
         }
     }
     
+    public int getMaxFitness() {
+        int max = 0;
+        for(Tabuleiro t : this.tabuleiros) {
+            int fitness = t.getFitness();
+            max = fitness > max ? fitness : max;
+        }
+        return max;
+    }
+    
     public void selecaoNatural() {
+        int maxFitness = getMaxFitness();
+        
         this.matingPool.clear();
         for(Tabuleiro t : this.tabuleiros) {
-            for(int i = 0; i < t.getFitness(); i++) {
+            int n = (t.getFitness() / maxFitness) * 100;
+            for(int i = 0; i < n; i++) {
                 this.matingPool.add(t);
             }
         }
@@ -65,11 +79,19 @@ public class Populacao {
                 best = t;
             }
         }
+        
+        if(maxFitness == (AlgoritmoGenetico.DAMAS_QTD * (AlgoritmoGenetico.DAMAS_QTD - 1)) / 2) {
+            this.end = true;
+        }
                
         if(best != null) {
             best.getDNA().print();
             System.out.println("\nFitness: " + best.getFitness());
             System.out.println("Geracao: " + this.geracao);
         }      
+    }
+    
+    public boolean getEnd() {
+        return this.end;
     }
 }
