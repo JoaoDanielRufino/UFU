@@ -27,8 +27,10 @@ public class DNA {
     }
     
     public DNA corssover(DNA paiB) {
-        int mid = this.genes.length / 2;
         int geneFilho[] = new int[this.genes.length];
+        
+        Random rand = new Random();
+        int mid = rand.nextInt(this.genes.length);
         
         for(int i = 0; i < this.genes.length; i++) {
             geneFilho[i] = mid < i ? this.genes[i] : paiB.geneAt(i);
@@ -38,7 +40,7 @@ public class DNA {
     }
     
     public void mutate() {
-        float mutationRate = 0.01f;
+        float mutationRate = 0.05f;
         
         Random rand = new Random();
         for(int i = 0; i < this.genes.length; i++) {
