@@ -1,0 +1,7 @@
+Tema: IA resposável por detectar e identificar um objeto mostrando o seu nome na língua desejada pelo usuário.
+
+Agente: Reativo simples
+  Performance: Identificar corretamento o objeto e traduzi-lo la língua desejada pelo usuário.
+  Ambiente: Agente único, determinístico, episódico, dinâmico, discreto.
+  Atuadores: Tela informando o resultado obtido.
+  Sensores: Câmera para identificar o objeto.
