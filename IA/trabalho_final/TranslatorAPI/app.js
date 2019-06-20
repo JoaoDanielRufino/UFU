@@ -3,7 +3,7 @@ const express = require('express');
 const LanguageTranslatorV3 = require('ibm-watson/language-translator/v3');
 
 const languageTranslator = new LanguageTranslatorV3({
-  iam_apikey: 'QDxkCiuGtTZrD58BASjxysbZe8Lb4GRx50KBmns6jsGi',
+  iam_apikey: '<MyApiKey>',
   url: 'https://gateway.watsonplatform.net/language-translator/api/',
   version: '2019-02-01'
 });
