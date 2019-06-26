@@ -1,28 +1,21 @@
 import random
 import numpy as np
 import math
+import statistics as st
 
-def roletaChegada(a, b, distProb):
+def roleta(a, b, media, distProb):
   if distProb == "uniforme":
     r = np.random.uniform()
     return round(a + (b-a)*r, 0)
   elif distProb == "exponencial":
     r = np.random.uniform()
-    return round(-1*math.log(1-r))
+    return round(-(1/(1/media))*math.log(1-r))
 
-def roletaSaida(a, b, distProb):
-  if distProb == "uniforme":
-    r = np.random.uniform()
-    return round(a + (b-a)*r, 0)
-  elif distProb == "exponencial":
-    r = np.random.uniform()
-    return round(-1*math.log(1-r))
-
-def geraMatriz(a, b, clientes, carac, distProb):
+def geraMatriz(a, b, media, clientes, carac, distProb):
   tabelaSimulacao = [[0 for i in range(8)] for j in range(clientes)]
   for cliente in range(clientes):
     if carac == "aleatorio":
-      tabelaSimulacao[cliente][0] = roletaChegada(a, b, distProb) # Tempo desde a ultima chegada
+      tabelaSimulacao[cliente][0] = roleta(a, b, media, distProb) # Tempo desde a ultima chegada
     elif carac == "deterministico":
       tabelaSimulacao[cliente][0] = a # Tempo desde a ultima chegada
 
@@ -39,7 +32,7 @@ def geraMatriz(a, b, clientes, carac, distProb):
       tabelaSimulacao[cliente][7] = tabelaSimulacao[cliente][3] - tabelaSimulacao[cliente-1][5] # Tempo livre do operador
 
     if carac == "aleatorio":
-      tabelaSimulacao[cliente][2] = roletaSaida(a, b, distProb) # Tempo do servico
+      tabelaSimulacao[cliente][2] = roleta(a, b, media, distProb) # Tempo do servico
     elif carac == "deterministico":
       tabelaSimulacao[cliente][2] = b # Tempo do servico
 
@@ -85,6 +78,22 @@ def printDados(tabelaSimulacao, estatisticas):
   print("Tempo medio de servico: " + str(tempoMedioServico))
   print("Tempo medio despendido no sistema: " + str(tempoMedioDespendido))
 
+def realizaSimulacao(a, b, media, clientes, carac, distProb):
+  numRep = 10
+  tempoMedioEsperaFila, probClienteFila, probOperadorLivre, tempoMedioServico, tempoMedioDespendido = [0]*numRep, [0]*numRep, [0]*numRep, [0]*numRep, [0]*numRep
+  for i in range(numRep):
+    tabelaSimulacao = geraMatriz(a, b, media, clientes, carac, distProb)
+    (tempoMedioEsperaFila[i], probClienteFila[i], probOperadorLivre[i], tempoMedioServico[i], tempoMedioDespendido[i]) = geraEstatisticas(tabelaSimulacao)
+    printDados(tabelaSimulacao, geraEstatisticas(tabelaSimulacao))
+    print("\n")
+
+  print("Desvio padrao dos dados:")
+  print("Tempo medio espera fila: " + str(st.stdev(tempoMedioEsperaFila)))
+  print("Probabilidade de um cliente esperar na fila: " + str(st.stdev(probClienteFila)))
+  print("Probabilidade do operador livre: " + str(st.stdev(probOperadorLivre)))
+  print("Tempo medio de servico: " + str(st.stdev(tempoMedioServico)))
+  print("Tempo medio despendido no sistema: " + str(st.stdev(tempoMedioDespendido)))
+
 def main():
 
   clientes = int(input("Digite a quantidade de clientes: "))
@@ -94,14 +103,18 @@ def main():
     ts = int(input("Digite o tempo de saida: "))
     tabelaSimulacao = geraMatriz(tc, ts, clientes, carac, None) # Gerando matriz de simulacao
   elif carac == "aleatorio":
+    a, b, media = None, None, None
     distProb = input("Digite a distribuicao de probabilidade (uniforme / exponencial): ")
-    a = int(input("Digite o intervalo lower bound: "))
-    b = int(input("Digite o intervalo upper bound: "))
-    tabelaSimulacao = geraMatriz(a, b, clientes, carac, distProb) # Gerando matriz de simulacao
+    if distProb == "uniforme":
+      a = int(input("Digite o intervalo lower bound: "))
+      b = int(input("Digite o intervalo upper bound: ")) 
+    elif distProb == "exponencial":
+      media = int(input("Digite a media: "))
+    realizaSimulacao(a, b, media, clientes, carac, distProb)
+    else:
+      input("Digite os dados corretamente")
   else:
     input("Digite os dados corretamente")
-
-  printDados(tabelaSimulacao, geraEstatisticas(tabelaSimulacao))
 
 
 if __name__ == "__main__":
