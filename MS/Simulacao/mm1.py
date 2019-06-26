@@ -4,11 +4,10 @@ import math
 import statistics as st
 
 def roleta(a, b, media, distProb):
+  r = np.random.uniform()
   if distProb == "uniforme":
-    r = np.random.uniform()
     return round(a + (b-a)*r, 0)
   elif distProb == "exponencial":
-    r = np.random.uniform()
     return round(-(1/(1/media))*math.log(1-r))
 
 def geraMatriz(a, b, media, clientes, carac, distProb):
@@ -94,8 +93,14 @@ def realizaSimulacao(a, b, media, clientes, carac, distProb):
   print("Tempo medio de servico: " + str(st.stdev(tempoMedioServico)))
   print("Tempo medio despendido no sistema: " + str(st.stdev(tempoMedioDespendido)))
 
-def main():
+  print("\nMedia dos dados:")
+  print("Tempo medio espera fila: " + str(st.mean(tempoMedioEsperaFila)))
+  print("Probabilidade de um cliente esperar na fila: " + str(st.mean(probClienteFila)))
+  print("Probabilidade do operador livre: " + str(st.mean(probOperadorLivre)))
+  print("Tempo medio de servico: " + str(st.mean(tempoMedioServico)))
+  print("Tempo medio despendido no sistema: " + str(st.mean(tempoMedioDespendido)))
 
+def main():
   clientes = int(input("Digite a quantidade de clientes: "))
   carac = input("Tempos de chegada e saida (aleatorio / deterministico)? ")
   if carac == "deterministico":
@@ -111,8 +116,6 @@ def main():
     elif distProb == "exponencial":
       media = int(input("Digite a media: "))
     realizaSimulacao(a, b, media, clientes, carac, distProb)
-    else:
-      input("Digite os dados corretamente")
   else:
     input("Digite os dados corretamente")
 
