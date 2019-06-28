@@ -1,3 +1,8 @@
+'''Segundo trabalho de Modelagem e Simulação: MM1
+   Grupo: Pedro Henrique Faria Teixeira
+          João Daniel de Aquino Rufino
+'''
+
 import random
 import numpy as np
 import math
@@ -106,7 +111,8 @@ def main():
   if carac == "deterministico":
     tc = int(input("Digite o tempo de entrada: "))
     ts = int(input("Digite o tempo de saida: "))
-    tabelaSimulacao = geraMatriz(tc, ts, clientes, carac, None) # Gerando matriz de simulacao
+    tabelaSimulacao = geraMatriz(tc, ts, None, clientes, carac, None) # Gerando matriz de simulacao
+    printDados(tabelaSimulacao,geraEstatisticas(tabelaSimulacao))
   elif carac == "aleatorio":
     a, b, media = None, None, None
     distProb = input("Digite a distribuicao de probabilidade (uniforme / exponencial): ")
@@ -115,9 +121,12 @@ def main():
       b = int(input("Digite o intervalo upper bound: ")) 
     elif distProb == "exponencial":
       media = int(input("Digite a media: "))
+    else:
+      print('Digite os dados corretamente')
+      return
     realizaSimulacao(a, b, media, clientes, carac, distProb)
   else:
-    input("Digite os dados corretamente")
+    print("Digite os dados corretamente")
 
 
 if __name__ == "__main__":
