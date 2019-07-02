@@ -8,12 +8,13 @@ import MyNavbar from './components/Navbar';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { dropdownTitle: "Choose a Language", screenshot: null, result: null, confidence: 0 };
+    this.state = { loading: true, dropdownTitle: "Choose a Language", screenshot: null, result: null, confidence: 0 };
     this.model = null;
   }
 
   async componentDidMount() {
     this.model = await cocoSsd.load();
+    this.setState({ loading: false });
   }
 
   setRef = webcam => {
@@ -22,7 +23,7 @@ class App extends React.Component {
 
   capture = () => {
     const screenshot = this.webcam.getScreenshot();
-    this.setState({ screenshot });
+    this.setState({ screenshot, result: null, confidence: 0 });
   }
 
   classify = async () => {
@@ -35,7 +36,7 @@ class App extends React.Component {
     }
     else {
       const result = predictions[0].class; // Best prediction
-      this.setState({ confidence: Math.round(predictions[0].score) });
+      this.setState({ confidence: Math.round(predictions[0].score * 100) });
       fetch('http://localhost:8080/translate?text=' + result + '&language=' + this.state.dropdownTitle)
         .then(response => response.json())
         .then(response => {
@@ -66,7 +67,7 @@ class App extends React.Component {
                   </Dropdown>
                 </Col>
                 <Col>
-                  <Button variant="primary" onClick={this.capture} >Capture photo</Button>
+                  {this.state.loading ? "Loading model..." : <Button variant="primary" onClick={this.capture} >Capture photo</Button> }
                 </Col>
               </Row>
             </Col>
@@ -82,7 +83,7 @@ class App extends React.Component {
                 </Col>
                 <Col>
                   <br />
-                  {this.state.result ? <span>Confidence: {this.state.confidence * 100}%</span> : null} 
+                  {this.state.result ? <span>Confidence: {this.state.confidence}%</span> : null} 
                 </Col>
               </Row>
             </Col>
