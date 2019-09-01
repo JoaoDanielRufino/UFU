@@ -68,7 +68,7 @@ def main():
 
   plt.ylabel('Media iteracoes para colisao')
   plt.xlabel('Quantidade de digitos iguas')
-  plt.plot(xAxis, resParadox, 'ro', xAxis, resNaive, 'bs')
+  plt.plot(xAxis, resParadox, 'ro', xAxis, resNaive, 'bs') # O vermelho eh usando o paradoxo, o azul o ingenuo
   plt.show()
 
 
