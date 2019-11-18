@@ -13,7 +13,7 @@ class LexicalAnalyzer {
   private:
     Buffer *buffer;
     TransitionTable *transitionTable;
-    unordered_map<string, Token*> simbleTable;
+    unordered_map<string, Token*> symbleTable;
 
     Token* createToken(int state, string c);
 
