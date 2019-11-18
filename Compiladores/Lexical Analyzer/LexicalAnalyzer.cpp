@@ -74,10 +74,10 @@ Token* LexicalAnalyzer::createToken(int state, string c) {
       break;
     case 4:
       if(simbleTable.count(c))
-        token = simbleTable[c];
+        token = symbleTable[c];
       else {
         token = new Token("ID", c);
-        simbleTable[c] = token;
+        symbleTable[c] = token;
       }
       break;
   }
@@ -116,5 +116,5 @@ Token* LexicalAnalyzer::getNextToken() {
 LexicalAnalyzer::~LexicalAnalyzer() {
   delete buffer;
   delete transitionTable;
-  simbleTable.clear();
+  symbleTable.clear();
 }
