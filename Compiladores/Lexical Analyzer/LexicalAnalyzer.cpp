@@ -73,7 +73,7 @@ Token* LexicalAnalyzer::createToken(int state, string c) {
       token = new Token("ENQUANTO", "");
       break;
     case 4:
-      if(simbleTable.count(c))
+      if(symbleTable.count(c))
         token = symbleTable[c];
       else {
         token = new Token("ID", c);
