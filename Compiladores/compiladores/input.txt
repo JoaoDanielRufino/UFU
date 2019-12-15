@@ -1,0 +1,18 @@
+programa
+    inicio
+        int a;
+        int b;
+
+        a = 1;
+
+        a + a;
+        a - a;
+        a * a;
+        a \ a;
+
+        se a > 3
+        entao
+            inicio
+                a = 3;
+            fim
+    fim
