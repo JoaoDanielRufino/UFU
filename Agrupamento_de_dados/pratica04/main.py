@@ -1,7 +1,6 @@
-import sys
-
 from CSVManager import CSVManager
 from DistanceFinder import DistanceFinder
+import sys
 
 
 def main():
@@ -10,7 +9,16 @@ def main():
 
     csvManager = CSVManager()
     df = csvManager.read(filePath)
-    formattedCSV = csvManager.deleteObjectColumns(df)
+
+    cols_with_missing = [col for col in df.columns if df[col].isnull().any()]
+
+    if cols_with_missing:
+        print('Formatting missing values...')
+        df = csvManager.replaceNan(df, cols_with_missing)
+    else:
+        print('Dont have missing values on this dataset')
+
+    formattedCSV = csvManager.deleteClassColumns(df)
 
     distanceFinder = DistanceFinder()
 
