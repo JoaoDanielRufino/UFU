@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabalho 1</title>
+</head>
+<body>
+  <nav>
+    <h2>Menu de navegação</h2>
+    <a href="index.html">Currículo</a>
+    <a href="galeria.html">Galeria</a>
+    <a href="oferta_trabalho.html">Oferta de trabalho</a>
+  </nav>
+
+  <form action="login.php" method="POST" autocomplete="off">
+    <fieldset>
+      <legend>Dados pessoais</legend>
+
+      <div>
+        <label for="nome">Nome: </label>
+        <input type="text" name="nome" id="nome" placeholder="Informe seu nome" required>
+      </div>
+      <div>
+        <label for="email">E-mail: </label>
+        <input type="email" name="email" id="email" placeholder="Informe seu email" required>
+      </div>
+      <div>
+        <label for="idade">Idade: </label>
+        <input type="number" name="idade" id="idade" placeholder="Informe sua idade" required>
+      </div>
+      <div>
+        <label for="telefone">Telefone: </label>
+        <input type="tel" name="telefone" id="telefone" placeholder="Informe seu telefone" required>
+      </div>
+      <div>
+        <label for="nascimento">Data nascimento: </label>
+        <input type="date" name="nascimento" id="nascimento" placeholder="Informe sua data de nascimento">
+      </div>
+      <div>
+        <input type="radio" name="sexo" id="masculino" value="masculino">
+        <label for="masculino">Masculino</label>
+      </div>
+      <div>
+        <input type="radio" name="sexo" id="feminino" value="feminino">
+        <label for="feminino">Feminino</label>
+      </div>
+      <br/>
+      <div>
+        <input type="radio" name="estadocivil" id="solteiro" value="solteiro">
+        <label for="solteiro">Solteiro</label>
+      </div>
+      <div>
+        <input type="radio" name="estadocivil" id="casado" value="casado">
+        <label for="casado">Casado</label>
+      </div>
+      <div>
+        <input type="radio" name="estadocivil" id="divorciado" value="divorciado">
+        <label for="divorciado">Divorciado</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Dados da empresa</legend>
+
+      <div>
+        <label for="cnpj">CNPJ: </label>
+        <input type="text" name="cnpj" id="cnpj" placeholder="Informe seu cnpj">
+      </div>
+      <div>
+        <label for="razao">Razão Social: </label>
+        <input type="text" name="razao" id="razao" placeholder="Informe sua Razão Social">
+      </div>
+      <div>
+        <label for="atuacao">Ramo de atuação: </label>
+        <input type="text" name="atuacao" id="atuacao" placeholder="Informe seu ramo de atuação">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Endereço</legend>
+
+      <div>
+        <label for="cep">CEP: </label>
+        <input type="text" name="cep" id="cep" placeholder="Informe seu cep" required>
+      </div>
+      <div>
+        <select name="tipo-logradouro" id="tipo-logradouro" required>
+          <option value="rua">Rua</option>
+          <option value="avenida">Avenida</option>
+          <option value="praca">Praça</option>
+        </select>
+      </div>
+      <div>
+        <label for="logradouro">Logradouro: </label>
+        <input type="text" name="logradouro" id="logradouro" placeholder="Informe seu logradouro" required>
+      </div>
+      <div>
+        <label for="cidade">Cidade: </label>
+        <input type="text" name="cidade" id="cidade" placeholder="Informe sua cidade" required>
+      </div>
+      <div>
+        <label for="estado">Estado: </label>
+        <input type="text" name="estado" id="estado" placeholder="Informe seu estado" required>
+      </div>
+    </fieldset>
+  </form>
+  
+</body>
+</html>
