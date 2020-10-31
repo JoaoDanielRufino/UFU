@@ -104,6 +104,59 @@
         <input type="text" name="estado" id="estado" placeholder="Informe seu estado" required>
       </div>
     </fieldset>
+
+    <fieldset>
+      <legend>Descrição do interesse</legend>
+
+      <div>
+        <label for="interesse">Interesse: </label>
+        <textarea name="interesse" id="interesse" cols="30" rows="10"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Outro</legend>
+
+      <fieldset>
+        <legend>Habilidades</legend>
+
+        <div>
+          <input type="checkbox" name="trabalho-equipe" id="trabalho-equipe">
+          <label for="trabalho-equipe">Trabalho em equipe</label>
+        </div>
+        <div>
+          <input type="checkbox" name="comunicativo" id="comunicativo">
+          <label for="comunicativo">Comunicativo</label>
+        </div>
+        <div>
+          <input type="checkbox" name="amigavel" id="amigavel">
+          <label for="amigavel">Amigavel</label>
+        </div>
+        <div>
+          <input type="checkbox" name="aprendizado" id="aprendizado">
+          <label for="aprendizado">Aprendizado rápido</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Disponibilidade para viajar</legend>
+
+        <div>
+          <input type="radio" name="disponibilidade" id="nenhuma" value="nenhuma">
+          <label for="nenhuma">Nenhuma</label>
+        </div>
+        <div>
+          <input type="radio" name="disponibilidade" id="as-vezes" value="as-vezes">
+          <label for="as-vezes">As vezes</label>
+        </div>
+        <div>
+          <input type="radio" name="disponibilidade" id="muita" value="muita">
+          <label for="muita">Muita</label>
+        </div>
+      </fieldset>
+    </fieldset>
+
+    <button type="submit">Enviar</button>
   </form>
   
 </body>
