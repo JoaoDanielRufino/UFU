@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Trabalho 2 da disciplina PPI">
+  <title>Exercicio 4</title>
+
+  <style>
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #ddd;
+      margin: 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: black;
+      color: whitesmoke;
+      font-size: 18px;
+      padding: 8px;
+    }
+
+    #profile-image {
+      width: 80px;
+      height: auto;
+      border-radius: 50%;
+      margin: 0 20px;
+    }
+
+    nav ul {
+      display: flex;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      padding: 0 36px;
+      font-size: 22px;
+      color: whitesmoke;
+    }
+
+    .nav-link:hover {
+      color: white;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    section {
+      background-color: white;
+      width: 80%;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    #lista-dados-pessoais {
+      margin-top: 10px;
+    }
+
+    #lista-dados-pessoais li {
+      padding-top: 10px;
+    }
+
+    #lista-formacao-academica {
+      margin-top: 10px;
+    }
+
+    #lista-formacao-academica li {
+      padding-top: 10px;
+    }
+
+    .link {
+      text-decoration: none;
+      color: teal;
+      font-size: 16px;
+    }
+
+    footer {
+      padding: 15px;
+      margin-top: 30px;
+      text-align: center;
+      color: whitesmoke;
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a class="nav-link" href="curriculo.html">Currículo</a></li>
+        <li><a class="nav-link" href="galeria.html">Galeria</a></li>
+        <li><a class="nav-link" href="oferta_trabalho.html">Oferta de trabalho</a></li>
+      </ul>  
+    </nav>
+    <table>
+      <tr>
+        <td>Joao Daniel de Aquino Rufino</td>
+        <td><img id="profile-image" src="./images/perfil.jpg" alt="foto_perfil"></td>
+      </tr>
+    </table>
+  </header>
+
+
+  <main>
+    <section>
+      <h2>Dados Pessoais</h2>
+      <ul id="lista-dados-pessoais">
+        <li><b>CPF:</b> 123.123.123-12</li>
+        <li><b>RG:</b> MG-22.123.123</li>
+        <li><b>Estado civil:</b> solteiro</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Formação Acadêmica</h2>
+      <ol id="lista-formacao-academica">
+        <li>Oficina do Saber</li>
+        <li>Teresa Valse</li>
+        <li>Universidade Federal de Uberlândia</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Experiência Profissional</h2>
+      <h4>Estagiário</h4>
+      <cite>Zup Innovation | Maio 2020 até o momento</cite>
+      <p>
+        Faço parte do projeto Open Source Ritchie  que permite criar, armazenar e compartilhar qualquer tipo de automação, 
+        executando-as através de linhas de comando, para executar operações ou iniciar fluxos de trabalho.
+      </p>
+
+      <h4>LinkedIn</h4>
+      <a class="link" href="https://www.linkedin.com/in/jo%C3%A3o-daniel-aquino-rufino-621b06192/" target="_blank">Meu LinkedIn</a>
+    </section>
+
+    <section>
+      <h2>Informações de contato</h2>
+      <ul>
+        <li>
+          <address>
+            Email: <a href="mailto:joaodaniel@gmail.com">joaodaniel@gmail.com</a>
+          </address>
+        </li>
+        <li>
+          <address>
+            Telefone: <a href="tel:3221-2231">3221-2231</a>
+          </address>
+        </li>
+      </ul>
+    </section>
+  </main>
+  
+  <footer>
+    <p>© Copyright 2020. Todos direitos reservados.<br>
+  </footer>
+</body>
+</html>

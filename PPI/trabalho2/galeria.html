@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabalho 1</title>
+
+  <style>
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #ddd;
+      margin: 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: black;
+      color: whitesmoke;
+      font-size: 18px;
+      padding: 8px;
+    }
+
+    #profile-image {
+      width: 80px;
+      height: auto;
+      border-radius: 50%;
+      margin: 0 20px;
+    }
+
+    nav ul {
+      display: flex;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      padding: 0 36px;
+      font-size: 22px;
+      color: whitesmoke;
+    }
+
+    .nav-link:hover {
+      color: white;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    section {
+      text-align: center;
+      padding: 10px;
+      margin-top: 30px;
+      box-shadow: 0px 0px 4px 4px rgba(86,86,86,0.4);
+      border-radius: 8px;
+    }
+
+    img {
+      width: 310px;
+      height: 280px;
+      border-radius: 8px;
+      margin: 8px;
+    }
+
+    footer {
+      padding: 15px;
+      margin-top: 30px;
+      text-align: center;
+      color: whitesmoke;
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a class="nav-link" href="curriculo.html">Currículo</a></li>
+        <li><a class="nav-link" href="galeria.html">Galeria</a></li>
+        <li><a class="nav-link" href="oferta_trabalho.html">Oferta de trabalho</a></li>
+      </ul>  
+    </nav>
+    <table>
+      <tr>
+        <td>Joao Daniel de Aquino Rufino</td>
+        <td><img id="profile-image" src="./images/perfil.jpg" alt="foto_perfil"></td>
+      </tr>
+    </table>
+  </header>
+
+  <main>
+    <section>
+      <h2>Instrumentos que toco</h2>
+      <table>
+        <tr>
+          <td>
+            <img src="./images/bateria.jpg" alt="bateria">
+          </td>
+          <td>
+            <img src="./images/guitara.jpg" alt="guitara">
+          </td>
+          <td>
+            <img src="./images/violao.jpg" alt="violao">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="./images/piano.jpg" alt="piano">
+          </td>
+          <td>
+            <img src="./images/kalimba.jpg" alt="kalimba">
+          </td>
+          <td>
+            <img src="./images/ukulele.jpg" alt="ukulele">
+          </td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Música favorita</h2>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/UFl9xuYP5T8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+  </main>
+
+  <footer>
+    <p>© Copyright 2020. Todos direitos reservados.<br>
+  </footer>
+</body>
+</html>
