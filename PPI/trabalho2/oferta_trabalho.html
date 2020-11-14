@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabalho 1</title>
+
+  <style>
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #ddd;
+      margin: 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: black;
+      color: whitesmoke;
+      font-size: 18px;
+      padding: 8px;
+    }
+
+    #profile-image {
+      width: 80px;
+      height: auto;
+      border-radius: 50%;
+      margin: 0 20px;
+    }
+
+    nav ul {
+      display: flex;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      padding: 0 36px;
+      font-size: 22px;
+      color: whitesmoke;
+    }
+
+    .nav-link:hover {
+      color: white;
+    }
+
+    form {
+      padding: 16px;
+    }
+
+    legend {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    input {
+      height: 24px;
+      font-size: 16px;
+      margin-top: 5px;
+      padding: 3px 8px;
+      border: 1px solid gray;
+      border-radius: 5px;
+      outline: 0;
+    }
+
+    input.focus:focus {
+      border: 1px solid green;
+      box-shadow: 0px 0px 5px green;
+    }
+
+    input:required::placeholder {
+      color: red;
+      font-size: 12px;
+    }
+
+    input:required:invalid + span::after {
+      content: '✖';
+      color: red;
+    }
+
+    input:valid + span::after {
+      content: '✔';
+      color: limegreen;
+    }
+
+    div {
+      margin: 12px;
+    }
+
+    .block {
+      display: block;
+    }
+
+    button {
+      background-color: blueviolet;
+      color: white;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    footer {
+      padding: 15px;
+      margin-top: 30px;
+      text-align: center;
+      color: whitesmoke;
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a class="nav-link" href="curriculo.html">Currículo</a></li>
+        <li><a class="nav-link" href="galeria.html">Galeria</a></li>
+        <li><a class="nav-link" href="oferta_trabalho.html">Oferta de trabalho</a></li>
+      </ul>  
+    </nav>
+    <table>
+      <tr>
+        <td>Joao Daniel de Aquino Rufino</td>
+        <td><img id="profile-image" src="./images/perfil.jpg" alt="foto_perfil"></td>
+      </tr>
+    </table>
+  </header>
+
+  <form action="login.php" method="POST" autocomplete="off">
+    <fieldset>
+      <legend>Dados pessoais</legend>
+
+      <div>
+        <label class="block" for="nome">Nome: </label>
+        <input class="focus" type="text" name="nome" id="nome" placeholder="Informe seu nome" required>
+        <span></span>
+      </div>
+      <div>
+        <label class="block" for="email">E-mail: </label>
+        <input class="focus" type="email" name="email" id="email" placeholder="Informe seu email" required>
+        <span></span>
+      </div>
+      <div>
+        <label class="block" for="idade">Idade: </label>
+        <input class="focus" type="number" name="idade" id="idade" placeholder="Informe sua idade" required>
+        <span></span>
+      </div>
+      <div>
+        <label class="block" for="telefone">Telefone: </label>
+        <input class="focus" type="tel" name="telefone" id="telefone" placeholder="Informe seu telefone" required>
+        <span></span>
+      </div>
+      <div> 
+        <label class="block" for="nascimento">Data nascimento: </label>
+        <input class="focus" type="date" name="nascimento" id="nascimento" placeholder="Informe sua data de nascimento">
+      </div>
+      <div>
+        <input type="radio" name="sexo" id="masculino" value="masculino">
+        <label for="masculino">Masculino</label>
+      </div>
+      <div>
+        <input type="radio" name="sexo" id="feminino" value="feminino">
+        <label for="feminino">Feminino</label>
+      </div>
+      <br/>
+      <div>
+        <input type="radio" name="estadocivil" id="solteiro" value="solteiro">
+        <label for="solteiro">Solteiro</label>
+      </div>
+      <div>
+        <input type="radio" name="estadocivil" id="casado" value="casado">
+        <label for="casado">Casado</label>
+      </div>
+      <div>
+        <input type="radio" name="estadocivil" id="divorciado" value="divorciado">
+        <label for="divorciado">Divorciado</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Dados da empresa</legend>
+
+      <div>
+        <label class="block" for="cnpj">CNPJ: </label>
+        <input class="focus" type="text" name="cnpj" id="cnpj" placeholder="Informe seu cnpj">
+      </div>
+      <div>
+        <label class="block" for="razao">Razão Social: </label>
+        <input class="focus" type="text" name="razao" id="razao" placeholder="Informe sua Razão Social">
+      </div>
+      <div>
+        <label class="block" for="atuacao">Ramo de atuação: </label>
+        <input class="focus" type="text" name="atuacao" id="atuacao" placeholder="Informe seu ramo de atuação">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Endereço</legend>
+
+      <div>
+        <label class="block" for="cep">CEP: </label>
+        <input class="focus" type="text" name="cep" id="cep" placeholder="Informe seu cep" required>
+        <span></span>
+      </div>
+      <div>
+        <label for="tipo-logradouro">Tipo logradouro: </label>
+        <select name="tipo-logradouro" id="tipo-logradouro" required>
+          <option value="rua">Rua</option>
+          <option value="avenida">Avenida</option>
+          <option value="praca">Praça</option>
+        </select>
+      </div>
+      <div>
+        <label class="focus" class="block" for="logradouro">Logradouro: </label>
+        <input type="text" name="logradouro" id="logradouro" placeholder="Informe seu logradouro" required>
+        <span></span>
+      </div>
+      <div>
+        <label class="block" for="cidade">Cidade: </label>
+        <input class="focus" type="text" name="cidade" id="cidade" placeholder="Informe sua cidade" required>
+        <span></span>
+      </div>
+      <div>
+        <label class="block" for="estado">Estado: </label>
+        <input class="focus" type="text" name="estado" id="estado" placeholder="Informe seu estado" required>
+        <span></span>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Descrição do interesse</legend>
+
+      <div>
+        <label class="block" for="interesse">Interesse: </label>
+        <textarea name="interesse" id="interesse" cols="30" rows="10"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Outro</legend>
+
+      <fieldset>
+        <legend>Habilidades</legend>
+
+        <div>
+          <input type="checkbox" name="trabalho-equipe" id="trabalho-equipe">
+          <label for="trabalho-equipe">Trabalho em equipe</label>
+        </div>
+        <div>
+          <input type="checkbox" name="comunicativo" id="comunicativo">
+          <label for="comunicativo">Comunicativo</label>
+        </div>
+        <div>
+          <input type="checkbox" name="amigavel" id="amigavel">
+          <label for="amigavel">Amigavel</label>
+        </div>
+        <div>
+          <input type="checkbox" name="aprendizado" id="aprendizado">
+          <label for="aprendizado">Aprendizado rápido</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Disponibilidade para viajar</legend>
+
+        <div>
+          <input type="radio" name="disponibilidade" id="nenhuma" value="nenhuma">
+          <label for="nenhuma">Nenhuma</label>
+        </div>
+        <div>
+          <input type="radio" name="disponibilidade" id="as-vezes" value="as-vezes">
+          <label for="as-vezes">As vezes</label>
+        </div>
+        <div>
+          <input type="radio" name="disponibilidade" id="muita" value="muita">
+          <label for="muita">Muita</label>
+        </div>
+      </fieldset>
+    </fieldset>
+
+    <button type="submit">Enviar</button>
+  </form>
+  
+  <footer>
+    <p>© Copyright 2020. Todos direitos reservados.<br>
+  </footer>
+</body>
+</html>
