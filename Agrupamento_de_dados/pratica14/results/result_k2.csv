@@ -1,4 +1,4 @@
 ,Iris-setosa,Iris-versicolor,Iris-virginica,Purity
-k0,77,26,0,0.7475728155339806
-k1,0,47,0,1.0
-Total,77,73,0,0.8266666666666667
+k0,54,6,0,0.9
+k1,0,90,0,1.0
+Total,54,96,0,0.96
