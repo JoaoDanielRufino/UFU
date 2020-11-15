@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercicio 3</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #ddd;
+    }
+
+    header {
+      padding: 5px 0px;
+      color:#ddd;
+      background-color: black;
+      text-align: center;
+    }
+
+    main {
+      margin: 0 auto;
+      background-color: white;
+      border: 0.5px solid gray;
+      padding: 2% 4%;
+      width: 50%;
+      margin-top: 10px;
+    }
+
+    h2 {
+      color: blue;
+    }
+
+    nav {
+      background-color: white;
+      box-shadow: 0 0 5px #333;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav button {
+      border: none;
+      outline: none;
+      background-color: inherit;
+      height: 30px;
+      margin: 0;
+    }
+
+    nav button:hover {
+      color: blue;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    button.buttonActive {
+      font-weight: bold;
+      color: blue;
+    }
+
+    .tabs section {
+      display: none;
+    }
+
+    section.tabActive {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <section>
+      <h1>Faculdade de Computação</h1>
+    </section>
+  </header>
+
+  <nav>
+    <ul>
+      <li><button>Ciência da Computação</button>|</li>
+      <li><button>Sistemas de Informação</button>|</li>
+      <li><button>Mestrado</button>|</li>
+      <li><button>Doutorado</button></li>
+    </ul>
+  </nav>
+  
+  <main>
+    <div class="tabs">
+      <section> 
+        <h2>Bacharelado em Ciência da Computação</h2>
+        <p>O Curso de Bacharelado em Ciência da Computação é o marco inicial da Faculdade de Computação.
+            Foi criado em 1988 e teve o seu reconhecimento em 11 de fevereiro de 1993 por meio da Portaria 181/93
+            do MEC. O objetivo do Curso é formar profissionais da área de Informática com competências no desenvolvimento
+            de software, atendendo adequadamente as exigências de mercado de trabalho, além de capacitar o egresso a concluir
+            com sucesso programas de pós-graduação.</p>
+        <p>Os egressos do curso têm obtido grande êxito na realização profissional, destacando, um considerável número
+            de empresas pertencentes à ex-alunos; um grande número de alunos que ingressam em consolidados cursos de pós-graduação
+            no país e exterior; atuação significativa de nossos ex-alunos em atividades de ensino e pesquisa em instituições de ensino
+            de nível superior; e outros tantos que atuam em grandes empresas nacionais e multinacionais.</p>
+      </section>
+      <section>
+        <h2>Bacharelado em Sistemas de Informação</h2>
+        <p>O Curso de Bacharelado em Sistemas de Informação foi criado no ano de 2009 e teve o seu reconhecimento em 31 de Maio
+            de 2013 por meio da Portaria 248/13 do Ministério da Educação.</p>
+        <p>O Objetivo do Curso é preparar profissionais com sólida e ampla formação técnica na área de tecnologia da informação
+            aplicada às organizações; Desenvolver discentes empreendedores, capazes de projetar, implementar e gerenciar a infraestrutura
+            de tecnologia da informação envolvendo computadores, comunicação e dados em sistemas organizacionais; Consolidar um profissional
+            cidadão, com competências - conhecimentos, habilidades e atitudes - e com responsabilidade social, capaz de respeitar as 
+            diferenças individuais, saber produzir e usar a tecnologia em benefício da sociedade e com visão sistêmica de negócios.</p>
+      </section>
+      <section>
+        <h2>Mestrado em Ciência da Computação</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id aliquet lectus proin nibh nisl condimentum.
+            Ac placerat vestibulum lectus mauris ultrices eros in cursus. Vitae congue mauris rhoncus aenean vel elit scelerisque mauris. Ultrices neque ornare aenean euismod. 
+            Lacus luctus accumsan tortor posuere.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id aliquet lectus proin nibh nisl condimentum.
+            Ac placerat vestibulum lectus mauris ultrices eros in cursus. Vitae congue mauris rhoncus aenean vel elit scelerisque mauris. Ultrices neque ornare aenean euismod. 
+            Lacus luctus accumsan tortor posuere.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id aliquet lectus proin nibh nisl condimentum.
+            Ac placerat vestibulum lectus mauris ultrices eros in cursus. Vitae congue mauris rhoncus aenean vel elit scelerisque mauris. Ultrices neque ornare aenean euismod. 
+            Lacus luctus accumsan tortor posuere.</p>
+      </section>
+      <section>
+        <h2>Doutorado em Ciência da Computação</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id aliquet lectus proin nibh nisl condimentum.
+            Ac placerat vestibulum lectus mauris ultrices eros in cursus. Vitae congue mauris rhoncus aenean vel elit scelerisque mauris. Ultrices neque ornare aenean euismod. 
+            Lacus luctus accumsan tortor posuere.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae turpis lobortis arcu dignissim aliquet. Curabitur bibendum posuere massa.
+            Aliquam fermentum pulvinar purus nec maximus. Nam mauris dolor, convallis et tincidunt ac, laoreet vitae augue. Phasellus leo neque, convallis dictum 
+            libero et, accumsan lobortis neque. Duis eu tortor pellentesque, dictum urna at, suscipit turpis.</p>
+        <p>Aenean suscipit dolor at est efficitur condimentum. 
+            Morbi vulputate dolor sed pellentesque iaculis. Sed justo enim, egestas vitae pretium quis, commodo quis nunc. Donec ut malesuada ipsum, sed feugiat mi. 
+            Quisque mattis condimentum augue ut hendrerit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id aliquet lectus proin nibh nisl 
+            condimentum. Ac placerat vestibulum lectus mauris ultrices eros in cursus. Vitae congue mauris rhoncus aenean vel elit scelerisque mauris. Ultrices neque ornare
+            aenean euismod. Lacus luctus accumsan tortor posuere.</p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    window.onload = function () {
+      buttons = document.querySelectorAll('nav button'); // Seleciona todos botões dentro da nav bar
+      for (let button of buttons) { // Percorre cada botão
+        button.addEventListener('click', changeTab); // Adiciona evento de click para cada botão
+      }
+      openTab(0); // Ao iniciar a página, por padrão a primeira tab será aberta
+    }
+
+    function changeTab(e) { // Recebendo o objeto de evento como parametro
+      const botaoAcionado = e.target; // Selecinando o botão que disparou o evento chageTab
+      const liDoBotao = botaoAcionado.parentNode; // Obtendo acesso ao nó pai do botaoAcionado
+      const nodes = Array.from(liDoBotao.parentNode.children); // Obtendo acesso de todos nós filhos do liDoBotao e contruindo um vetor
+      const index = nodes.indexOf(liDoBotao); // Acessando a posição do liDoBotao
+      openTab(index); // Abrindo a tab com o índice do liDoBotao
+    }
+
+    function openTab(i) {
+      const lastTabActive = document.querySelector('.tabActive'); // Seleciona o elemento com a classe = tabActive
+      if(lastTabActive !== null) // Checando se o elemento existe
+          lastTabActive.className = ""; // Removendo classe tabActive do elemento lastTabActive
+      
+      const lastButtonActive = document.querySelector('.buttonActive'); // Seleciona o elemento com a classe = buttonActive
+      if(lastButtonActive !== null) // Checando se o elemento existe
+          lastButtonActive.className = ""; // Removendo classe buttonActive do elemento lastButtonActive
+
+      document.querySelectorAll('.tabs section')[i].className = "tabActive"; // Selecionando todos elementos section dentro de .tabs e filtrando a section em particular atraves do índice passado, e adicinando a classe tabActive na section em particular
+      document.querySelectorAll('nav button')[i].className = "buttonActive"; // Selecionando todos elementos button dentro de nav e filtrando o button em particular atraves do índice passado, e adicinando a classe buttonActive no botão em particular
+    }
+  </script>
+</body>
+</html>
