@@ -11,7 +11,11 @@
   <div class="container">
     <main>
     <?php
-      $produtos = array("soja", "sabonete", "petróleo", "fruta", "algodão", "café", "sabão", "telefone fixo", "telefone celular", "papel")
+      $qtd = 0;
+      if(isset($_GET["qtd"]))
+        $qtd = $_GET["qtd"];
+
+      $produtos = array("soja", "sabonete", "petróleo", "fruta", "algodão", "café", "sabão", "telefone fixo", "telefone celular", "papel");
       $descricao = array(
         "Grao agropecuario comercializado muldialmente",
         "Produto utilizado para a higiene pessoal",
@@ -23,9 +27,23 @@
         "É um telefone que usa um fio metálico ou uma linha telefônica de fibra óptica para transmissão",
         "É um aparelho de comunicação por ondas eletromagnéticas que permite a transmissão bidirecional de voz e dados",
         "Substância constituída por elementos fibrosos de origem vegetal"
-      )
+      );
 
-      
+      echo "<table class='table table-striped'>
+        <thead>
+          <tr>
+            <th scope='col'>#</th>
+            <th scope='col'>Produto</th>
+            <th scope='col'>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>";
+        for($i = 0; $i < $qtd; $i++) {
+          $r = rand(0, 9);
+          echo "<tr><th scope='col'>$i</th><th scope='col'>$produtos[$r]</th><th scope='col'>$descricao[$r]</th></tr>";
+        }
+      echo "</tbody>
+      </table>";
     ?>
     </main>
   </div>
