@@ -163,10 +163,12 @@
             url: `get_info_cep.php?cep=${e.target.value}`,
             success: res => {
               response = JSON.parse(res);
-              document.getElementById("logradouro").value = response['logradouro'];
-              document.getElementById("bairro").value = response['bairro'];
-              document.getElementById("cidade").value = response['cidade'];
-              document.getElementById("estado").value = response['estado'];
+              if(Object.keys(response).length > 0) {
+                document.getElementById("logradouro").value = response['logradouro'];
+                document.getElementById("bairro").value = response['bairro'];
+                document.getElementById("cidade").value = response['cidade'];
+                document.getElementById("estado").value = response['estado'];
+              }
             }
           })
         }
