@@ -66,16 +66,16 @@
         $stmt = $pdo->query($sql);
         while ($row = $stmt->fetch()) {
           $tbody .= "<tr><th scope='row'>$count</th>".
-                    "<td>". $row['nome'] . "</td>".
-                    "<td>" . $row['email'] . "</td>".
-                    "<td>" . $row['telefone'] . "</td>".
-                    "<td>" . $row['cep'] . "</td>".
-                    "<td>" . $row['logradouro'] ."</td>".
-                    "<td>" . $row['bairro'] . "</td>".
-                    "<td>" . $row['cidade'] . "</td>".
-                    "<td>" . $row['estado'] . "</td>".
-                    "<td>" . $row['data_contrato'] . "</td>".
-                    "<td>". $row['salario'] . "</td>";
+                    "<td>". htmlspecialchars($row['nome']) . "</td>".
+                    "<td>" . htmlspecialchars($row['email']) . "</td>".
+                    "<td>" . htmlspecialchars($row['telefone']) . "</td>".
+                    "<td>" . htmlspecialchars($row['cep']) . "</td>".
+                    "<td>" . htmlspecialchars($row['logradouro']) ."</td>".
+                    "<td>" . htmlspecialchars($row['bairro']) . "</td>".
+                    "<td>" . htmlspecialchars($row['cidade']) . "</td>".
+                    "<td>" . htmlspecialchars($row['estado']) . "</td>".
+                    "<td>" . htmlspecialchars($row['data_contrato']) . "</td>".
+                    "<td>". htmlspecialchars($row['salario']) . "</td>";
           $count++;
         }
         

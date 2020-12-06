@@ -9,7 +9,7 @@
 
   try {
     $sql = <<<SQL
-    INSERT INTO base_enderecos_ajax (cep, logradouro, bairro, cidade, estado)
+    INSERT INTO agenda (cep, logradouro, bairro, cidade, estado)
     VALUES (?, ?, ?, ?, ?)
     SQL;
 

@@ -61,11 +61,11 @@
         $stmt = $pdo->query($sql);
         while ($row = $stmt->fetch()) {
           $tbody .= "<tr><th scope='row'>$count</th>".
-                    "<td>". $row['data_agendamento'] . "</td>".
-                    "<td>" . $row['horario'] . "</td>".
-                    "<td>" . $row['nome'] . "</td>".
-                    "<td>" . $row['email'] . "</td>".
-                    "<td>" . $row['telefone'] ."</td>";
+                    "<td>". htmlspecialchars($row['data_agendamento']) . "</td>".
+                    "<td>" . htmlspecialchars($row['horario']) . "</td>".
+                    "<td>" . htmlspecialchars($row['nome'] ). "</td>".
+                    "<td>" . htmlspecialchars($row['email']) . "</td>".
+                    "<td>" . htmlspecialchars($row['telefone']) ."</td>";
           $count++;
         }
         
