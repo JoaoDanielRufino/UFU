@@ -19,11 +19,6 @@
     a {
       text-decoration: none;
     } 
-
-    img {
-      border-radius: 4px;
-    }
-
   </style>
 </head>
 <body>
@@ -36,20 +31,61 @@
       <a class="p-2 text-dark" href="funcionarios.php">Listar Funcionários</a>
       <a class="p-2 text-dark" href="pacientes.php">Listar Pacientes</a>
       <a class="p-2 text-dark" href="enderecos.php">Listar Endereços</a>
-      <a class="p-2 text-dark" href="todos_agendamentos.php">Listar todos Agendamentos</a>
+      <a class="p-2 text-blue" href="todos_agendamentos.php">Listar todos Agendamentos</a>
       <a class="p-2 text-dark" href="meus_agendamentos.php">Listar meus Agendamentos</a>
     </nav>
     <a class="btn btn-outline-primary" href="login.html">Nome Pessoa</a>
   </header>
-  
-  <main>
-    <h1>Parte restrita do site</h1>
-  </main>
+
+  <div class="container">
+    <?php
+      include "../db/db_connection.php";
+
+      try {
+        $sql = <<<SQL
+        SELECT *
+        FROM agenda
+        SQL;
+
+        $table = "<table class='table table-success table-striped'><thead><tr>" . 
+                "<th scope='col'>#</th>" .
+                "<th scope='col'>Data agendamento</th>" .
+                "<th scope='col'>Horario</th>" .
+                "<th scope='col'>Nome</th>" .
+                "<th scope='col'>Email</th>" .
+                "<th scope='col'>Telefone</th></tr></thead>";
+
+        $tbody = "<tbody>";
+
+        $count = 0;
+        $stmt = $pdo->query($sql);
+        while ($row = $stmt->fetch()) {
+          $tbody .= "<tr><th scope='row'>$count</th>".
+                    "<td>". $row['data_agendamento'] . "</td>".
+                    "<td>" . $row['horario'] . "</td>".
+                    "<td>" . $row['nome'] . "</td>".
+                    "<td>" . $row['email'] . "</td>".
+                    "<td>" . $row['telefone'] ."</td>";
+          $count++;
+        }
+        
+        $tbody .= "</tbody>";
+        $table .= $tbody . "</table>";
+
+        if($count == 0) {
+          echo "<h1>Nenhum funcionário para listar</h1>";
+        } else {
+          echo $table;
+        }
+      } catch (Exception $e) {
+        exit('Falha ao cadastrar os dados: ' . $e->getMessage());
+      }
+    ?>
+  </div>
 
   <!-- <footer class="container text-center">
     <p>&copy; 2020 Company, Inc.</p>
   </footer> -->
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
+  
 </body>
 </html>

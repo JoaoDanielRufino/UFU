@@ -19,11 +19,6 @@
     a {
       text-decoration: none;
     } 
-
-    img {
-      border-radius: 4px;
-    }
-
   </style>
 </head>
 <body>
@@ -31,25 +26,66 @@
     <img src="../images/logo.png" alt="logo" width="50px">
     <p class="h5 my-0 mr-md-auto fw-normal">Clínica Lawrence</p>
     <nav class="my-2 my-md-0 mr-md-3">
-      <a class="p-2 text-dark" href="novo_funcionario.html">Novo Funcionário</a>
+    <a class="p-2 text-dark" href="novo_funcionario.html">Novo Funcionário</a>
       <a class="p-2 text-dark" href="novo_paciente.html">Novo Paciente</a>
       <a class="p-2 text-dark" href="funcionarios.php">Listar Funcionários</a>
       <a class="p-2 text-dark" href="pacientes.php">Listar Pacientes</a>
-      <a class="p-2 text-dark" href="enderecos.php">Listar Endereços</a>
+      <a class="p-2 text-blue" href="enderecos.php">Listar Endereços</a>
       <a class="p-2 text-dark" href="todos_agendamentos.php">Listar todos Agendamentos</a>
       <a class="p-2 text-dark" href="meus_agendamentos.php">Listar meus Agendamentos</a>
     </nav>
     <a class="btn btn-outline-primary" href="login.html">Nome Pessoa</a>
   </header>
-  
-  <main>
-    <h1>Parte restrita do site</h1>
-  </main>
+
+  <div class="container">
+    <?php
+      include "../db/db_connection.php";
+
+      try {
+        $sql = <<<SQL
+        SELECT *
+        FROM base_enderecos_ajax
+        SQL;
+
+        $table = "<table class='table table-success table-striped'><thead><tr>" . 
+                "<th scope='col'>#</th>" .
+                "<th scope='col'>Cep</th>" .
+                "<th scope='col'>Logradouro</th>" .
+                "<th scope='col'>Bairro</th>" .
+                "<th scope='col'>Cidade</th>" .
+                "<th scope='col'>Estado</th></tr></thead>";
+
+        $tbody = "<tbody>";
+
+        $count = 0;
+        $stmt = $pdo->query($sql);
+        while ($row = $stmt->fetch()) {
+          $tbody .= "<tr><th scope='row'>$count</th>".
+                    "<td>" . $row['cep'] . "</td>".
+                    "<td>" . $row['logradouro'] ."</td>".
+                    "<td>" . $row['bairro'] . "</td>".
+                    "<td>" . $row['cidade'] . "</td>".
+                    "<td>". $row['estado'] . "</td>";
+          $count++;
+        }
+        
+        $tbody .= "</tbody>";
+        $table .= $tbody . "</table>";
+
+        if($count == 0) {
+          echo "<h1>Nenhum funcionário para listar</h1>";
+        } else {
+          echo $table;
+        }
+      } catch (Exception $e) {
+        exit('Falha ao cadastrar os dados: ' . $e->getMessage());
+      }
+    ?>
+  </div>
 
   <!-- <footer class="container text-center">
     <p>&copy; 2020 Company, Inc.</p>
   </footer> -->
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
+  
 </body>
 </html>
