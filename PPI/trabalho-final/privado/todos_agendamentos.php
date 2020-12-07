@@ -73,7 +73,7 @@
         $table .= $tbody . "</table>";
 
         if($count == 0) {
-          echo "<h1>Nenhum funcionário para listar</h1>";
+          echo "<h1>Nenhum agendamento para listar</h1>";
         } else {
           echo $table;
         }
