@@ -6,6 +6,8 @@
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ" crossorigin="anonymous">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <title>Agendamento</title>
 
   <style>
@@ -47,13 +49,10 @@
   </header>
   
   <div class="container mt-5">
-    <form action="./exercicio1.php" method="POST" class="row g-3">
+    <form method="POST" class="row g-3">
       <div class="form-floating col-sm-3">
         <select name="especialidade" id="especialidade" class="form-select">
             <option selected>Sel.</option>
-            <option value="Anestesista">Anestesista</option>
-            <option value="Cirurgião">Cirurgião</option>
-            <option value="Urologista">Urologista</option>
         </select>
         <label for="especialidade">Especialidade médica desejada</label>
       </div>
@@ -61,9 +60,6 @@
       <div class="form-floating col-sm-3">
         <select name="nome_medico" id="nome_medico" class="form-select">
             <option selected>Sel.</option>
-            <option value="Anestesista">Anestesista</option>
-            <option value="Cirurgião">Cirurgião</option>
-            <option value="Urologista">Urologista</option>
         </select>
         <label for="nome_medico">Nome do médico especialista</label>
       </div>
@@ -76,9 +72,16 @@
       <div class="form-floating col-sm-3">
         <select name="disponivel" id="disponivel" class="form-select">
             <option selected>Sel.</option>
-            <option value="8">10</option>
-            <option value="9">11</option>
-            <option value="10">12</option>
+            <option id="h-08:00:00" value="08:00">8</option>
+            <option id="h-09:00:00" value="09:00">9</option>
+            <option id="h-10:00:00" value="10:00">10</option>
+            <option id="h-11:00:00" value="11:00">11</option>
+            <option id="h-12:00:00" value="12:00">12</option>
+            <option id="h-13:00:00" value="13:00">13</option>
+            <option id="h-14:00:00" value="14:00">14</option>
+            <option id="h-15:00:00" value="15:00">15</option>
+            <option id="h-16:00:00" value="16:00">16</option>
+            <option id="h-17:00:00" value="17:00">17</option>
         </select>
         <label for="disponivel">Horário disponível</label>
       </div>
@@ -110,6 +113,75 @@
     <hr>
     <p>&copy; 2020 Company, Inc.</p>
   </footer>
+
+  <script>
+    window.onload = () => {
+      const selectEspecialidade = document.getElementById('especialidade');
+      const selectMedico = document.getElementById('nome_medico');
+
+      selectEspecialidade.addEventListener('change', e => {
+        $.ajax({
+          type: 'GET',
+          url: 'listar_nome_medico.php',
+          data: {especialidade: e.target.value},
+          success: res => {
+            response = JSON.parse(res);
+            if(Object.keys(response).length > 0) {
+              response['medicos'].forEach(medico => {
+                const option = document.createElement("option");
+                option.text = medico;
+                option.value = medico;
+                selectMedico.appendChild(option);
+              });
+            }
+          }
+        })
+      })
+
+      selectMedico.addEventListener('change', e => {
+        $.ajax({
+          type: 'GET',
+          url: 'agendamentos_medicos.php',
+          data: {nome_medico: e.target.value},
+          success: res => {
+            response = JSON.parse(res);
+            if(Object.keys(response).length > 0) {
+              response['horarios'].forEach(horario => {
+                document.getElementById(`h-${horario}`).disabled = true;
+              });
+            }
+          }
+        })
+      })
+
+      $.ajax({
+        type: 'GET',
+        url: 'listar_especialidade.php',
+        success: res => {
+          response = JSON.parse(res);
+          if(Object.keys(response).length > 0) {
+            response['especialidades'].forEach(especialidade => {
+              const option = document.createElement("option");
+              option.text = especialidade;
+              option.value = especialidade;
+              selectEspecialidade.appendChild(option);
+            });
+          }
+        }
+      })
+
+      $('form').on('submit', () => {
+        $.ajax({
+          type: 'POST',
+          url: 'cadastro_agendamento.php',
+          data: $('form').serialize(),
+          success: res => {
+            alert(res);
+          }
+        })
+      })
+    }
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy" crossorigin="anonymous"></script>
 </body>
