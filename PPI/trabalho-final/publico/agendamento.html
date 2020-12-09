@@ -118,8 +118,43 @@
     window.onload = () => {
       const selectEspecialidade = document.getElementById('especialidade');
       const selectMedico = document.getElementById('nome_medico');
+      const selectHoras = document.getElementById('disponivel');
+
+      function habilitaHoras() {
+        const options = selectHoras.childNodes;
+
+        options.forEach(option => {
+          option.disabled = false;
+        })
+      }
+
+      function limpaMedicos() {
+        const medicos = selectMedico.childNodes;
+
+        medicos.forEach(medico => {
+          if(medico.textContent != "Sel.") {
+            medico.selected = false;
+            selectMedico.removeChild(medico);
+          }
+        })
+      }
+
+      function limpaHoras() {
+        const horas = selectHoras.childNodes;
+
+        horas.forEach(hora => {
+          if(hora.textContent == "Sel.") {
+            hora.selected = true;
+          } else {
+            hora.selected = false;
+          }
+        })
+      }
 
       selectEspecialidade.addEventListener('change', e => {
+        limpaMedicos();
+        limpaHoras();
+        habilitaHoras();
         $.ajax({
           type: 'GET',
           url: 'listar_nome_medico.php',
@@ -139,6 +174,8 @@
       })
 
       selectMedico.addEventListener('change', e => {
+        habilitaHoras();
+        limpaHoras();
         $.ajax({
           type: 'GET',
           url: 'agendamentos_medicos.php',

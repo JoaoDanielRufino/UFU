@@ -15,10 +15,10 @@
 
     $myObj = new stdClass();
     while ($row = $stmt->fetch()) {
-      $myObj->logradouro = $row["logradouro"];
-      $myObj->bairro = $row["bairro"];
-      $myObj->cidade = $row["cidade"];
-      $myObj->estado = $row["estado"];
+      $myObj->logradouro = htmlspecialchars($row["logradouro"]);
+      $myObj->bairro = htmlspecialchars($row["bairro"]);
+      $myObj->cidade = htmlspecialchars($row["cidade"]);
+      $myObj->estado = htmlspecialchars($row["estado"]);
     }
     
     echo json_encode($myObj);
