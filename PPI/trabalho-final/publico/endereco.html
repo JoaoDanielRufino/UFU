@@ -92,7 +92,8 @@
     window.onload = () => {
       $('#cep').mask('00000-000')
 
-      $('form').on('submit', () => {
+      $('form').on('submit', (e) => {
+        e.preventDefault();
         $.ajax({
           type: 'POST',
           url: 'cadastro_endereco.php',

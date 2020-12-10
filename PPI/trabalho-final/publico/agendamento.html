@@ -207,7 +207,8 @@
         }
       })
 
-      $('form').on('submit', () => {
+      $('form').on('submit', (e) => {
+        e.preventDefault();
         $.ajax({
           type: 'POST',
           url: 'cadastro_agendamento.php',

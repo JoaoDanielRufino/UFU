@@ -131,7 +131,8 @@
 
   <script>
     window.onload = () => {
-      $('form').on('submit', () => {
+      $('form').on('submit', (e) => {
+        e.preventDefault();
         $.ajax({
           type: 'POST',
           url: 'cadastro_novo_paciente.php',

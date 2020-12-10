@@ -88,31 +88,37 @@
     </div>
   </div>
 
-  <!--  trocar para ajax -->
   <script>
-    window.onload = function () { // toda vez que a página for logado ou relogada essa função é chamada
-      document.forms.formCadastro.onsubmit = validaForm; // chama a função validForm toda vez que o formulário for submetido
+    window.onload = () => { 
+      document.forms.formCadastro.onsubmit = validaForm;
 
-      $('form').on('submit', () => {
+      $('form').on('submit', (e) => {
+        e.preventDefault();
         $.ajax({
           type: 'POST',
           url: 'login.php',
           data: $('form').serialize(),
           success: res => {
-            window.location = "/privado";
+            res = JSON.parse(res);
+            if(res.response) {
+              window.location = '/privado';
+            } else {
+              alert('Dados incorretos');
+            }
+          },
+          error: (a, b) => {
+            console.log('ERRO', a, b);
           }
         })
       })   
     }
 
-    // Verifica se todos os campos foram preenchidos, se positivo retorna verdadeiro, caso algum fique em branco
-    // retorna falso, impedindo a submição do formulário
     function validaForm (e) {
-      let form = e.target; // acesso ao formulário
+      let form = e.target;
       let formValido = true
 
-      const spanSenha = form.senha.nextElementSibling;//acesso ao span pertencente a senha
-      const spanEmail = form.email.nextElementSibling;//acesso ao span pertencente ao email
+      const spanSenha = form.senha.nextElementSibling;
+      const spanEmail = form.email.nextElementSibling;
 
       spanSenha.textContent = "";
       spanEmail.textContent = "";
