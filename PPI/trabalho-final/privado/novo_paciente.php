@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -23,10 +27,12 @@
       text-decoration: none;
     } 
 
-    img {
-      border-radius: 4px;
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
     }
-
   </style>
 </head>
 <body>
@@ -34,13 +40,19 @@
     <img src="../images/logo.png" alt="logo" width="50px">
     <p class="h5 my-0 mr-md-auto fw-normal">Clínica Lawrence</p>
     <nav class="my-2 my-md-0 mr-md-3">
-      <a class="p-2 text-dark" href="novo_funcionario.html">Novo Funcionário</a>
-      <a class="p-2 text-blue" href="novo_paciente.html">Novo Paciente</a>
+      <a class="p-2 text-dark" href="novo_funcionario.php">Novo Funcionário</a>
+      <a class="p-2 text-blue" href="novo_paciente.php">Novo Paciente</a>
       <a class="p-2 text-dark" href="funcionarios.php">Listar Funcionários</a>
       <a class="p-2 text-dark" href="pacientes.php">Listar Pacientes</a>
       <a class="p-2 text-dark" href="enderecos.php">Listar Endereços</a>
       <a class="p-2 text-dark" href="todos_agendamentos.php">Listar todos Agendamentos</a>
-      <a class="p-2 text-dark" href="meus_agendamentos.php">Listar meus Agendamentos</a>
+      <?php
+        if(isset($_SESSION["medico"]) && $_SESSION["medico"]) {
+          echo <<<HTML
+            <a class="p-2 text-dark" href="meus_agendamentos.php">Listar meus Agendamentos</a>
+          HTML;
+        }
+      ?>
     </nav>
     <a class="btn btn-outline-primary" href="login.html">Nome Pessoa</a>
   </header>
@@ -125,9 +137,10 @@
     </div>
   </main>
 
-  <!-- <footer class="container text-center">
+  <footer>
+    <hr>
     <p>&copy; 2020 Company, Inc.</p>
-  </footer> -->
+  </footer>
 
   <script>
     window.onload = () => {

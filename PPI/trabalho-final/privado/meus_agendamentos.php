@@ -41,17 +41,15 @@
       <a class="p-2 text-dark" href="novo_paciente.php">Novo Paciente</a>
       <a class="p-2 text-dark" href="funcionarios.php">Listar Funcionários</a>
       <a class="p-2 text-dark" href="pacientes.php">Listar Pacientes</a>
-      <a class="p-2 text-blue" href="enderecos.php">Listar Endereços</a>
+      <a class="p-2 text-dark" href="enderecos.php">Listar Endereços</a>
       <a class="p-2 text-dark" href="todos_agendamentos.php">Listar todos Agendamentos</a>
-
       <?php
         if(isset($_SESSION["medico"]) && $_SESSION["medico"]) {
           echo <<<HTML
-            <a class="p-2 text-dark" href="meus_agendamentos.php">Listar meus Agendamentos</a>
+            <a class="p-2 text-blue" href="meus_agendamentos.php">Listar meus Agendamentos</a>
           HTML;
         }
       ?>
-
     </nav>
     <a class="btn btn-outline-primary" href="login.html">Nome Pessoa</a>
   </header>
@@ -63,28 +61,30 @@
       try {
         $sql = <<<SQL
         SELECT *
-        FROM base_enderecos_ajax
+        FROM agenda as a
+        WHERE codigo_medico = ?
         SQL;
 
         $table = "<table class='table table-success table-striped'><thead><tr>" . 
                 "<th scope='col'>#</th>" .
-                "<th scope='col'>Cep</th>" .
-                "<th scope='col'>Logradouro</th>" .
-                "<th scope='col'>Bairro</th>" .
-                "<th scope='col'>Cidade</th>" .
-                "<th scope='col'>Estado</th></tr></thead>";
+                "<th scope='col'>Data agendamento</th>" .
+                "<th scope='col'>Horario</th>" .
+                "<th scope='col'>Nome</th>" .
+                "<th scope='col'>Email</th>" .
+                "<th scope='col'>Telefone</th></tr></thead>";
 
         $tbody = "<tbody>";
 
         $count = 0;
-        $stmt = $pdo->query($sql);
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$_SESSION["codigo"]]);
         while ($row = $stmt->fetch()) {
           $tbody .= "<tr><th scope='row'>$count</th>".
-                    "<td>" . htmlspecialchars($row['cep']) . "</td>".
-                    "<td>" . htmlspecialchars($row['logradouro']) ."</td>".
-                    "<td>" . htmlspecialchars($row['bairro']) . "</td>".
-                    "<td>" . htmlspecialchars($row['cidade']) . "</td>".
-                    "<td>". htmlspecialchars($row['estado']) . "</td>";
+                    "<td>". htmlspecialchars($row['data_agendamento']) . "</td>".
+                    "<td>" . htmlspecialchars($row['horario']) . "</td>".
+                    "<td>" . htmlspecialchars($row['nome'] ). "</td>".
+                    "<td>" . htmlspecialchars($row['email']) . "</td>".
+                    "<td>" . htmlspecialchars($row['telefone']) ."</td>";
           $count++;
         }
         
@@ -92,7 +92,7 @@
         $table .= $tbody . "</table>";
 
         if($count == 0) {
-          echo "<h1>Nenhum funcionário para listar</h1>";
+          echo "<h1>Nenhum agendamento para listar</h1>";
         } else {
           echo $table;
         }
@@ -101,6 +101,7 @@
       }
     ?>
   </div>
+
 
   <footer>
     <hr>
