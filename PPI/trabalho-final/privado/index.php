@@ -28,6 +28,19 @@
       border-radius: 4px;
     }
 
+    main {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .card {
+      border-radius: 4px;
+      width: 100%;
+      text-align: center;
+    }
+
     footer {
       position: absolute;
       bottom: 0;
@@ -55,15 +68,19 @@
         }
       ?>
     </nav>
-    <a class="btn btn-outline-primary" href="login.html">Nome Pessoa</a>
+    <button class="btn btn-outline-primary"><?= isset($_SESSION["nome"]) ? $_SESSION["nome"] : "Pessoa" ?></button>
   </header>
-  
+
   <main>
-    <h1>Parte restrita do site</h1>
+    <div class="card">
+      <img src="../images/lawrence.png" class="card-img-top img-fluid" alt="logo">
+      <div class="card-body">
+        <p class="card-text">Seja bem vindo a página privada da Clínica Lawrence.</p>
+      </div>
+    </div>
   </main>
 
-  <footer class="container text-center">
-    <hr>
+  <footer class="footer mt-auto py-3 bg-light text-center">
     <p>&copy; 2020 Company, Inc.</p>
   </footer>
 

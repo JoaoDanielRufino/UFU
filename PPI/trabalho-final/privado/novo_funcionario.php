@@ -54,7 +54,7 @@
         }
       ?>
     </nav>
-    <a class="btn btn-outline-primary" href="login.html">Nome Pessoa</a>
+    <button class="btn btn-outline-primary"><?= isset($_SESSION["nome"]) ? $_SESSION["nome"] : "Pessoa" ?></button>
   </header>
   
   <main>
@@ -144,8 +144,7 @@
     </div>
   </main>
 
-  <footer>
-    <hr>
+  <footer class="footer mt-auto py-3 bg-light text-center">
     <p>&copy; 2020 Company, Inc.</p>
   </footer>
 

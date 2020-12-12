@@ -23,6 +23,13 @@
       text-decoration: none;
     }
 
+    .card {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
     footer {
       position: absolute;
       bottom: 0;
@@ -50,7 +57,7 @@
         }
       ?>
     </nav>
-    <a class="btn btn-outline-primary" href="login.html">Nome Pessoa</a>
+    <button class="btn btn-outline-primary"><?= isset($_SESSION["nome"]) ? $_SESSION["nome"] : "Pessoa" ?></button>
   </header>
 
   <div class="container">
@@ -89,7 +96,13 @@
         $table .= $tbody . "</table>";
 
         if($count == 0) {
-          echo "<h1>Nenhum agendamento para listar</h1>";
+          echo <<<HTML
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">Nennhum agendamento a ser listado ;(</p>
+            </div>
+          </div>
+        HTML;
         } else {
           echo $table;
         }
@@ -99,8 +112,7 @@
     ?>
   </div>
 
-  <footer>
-    <hr>
+  <footer class="footer mt-auto py-3 bg-light text-center">
     <p>&copy; 2020 Company, Inc.</p>
   </footer>
   

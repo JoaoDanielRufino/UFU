@@ -18,7 +18,7 @@
     SQL;
 
     $sql = <<<SQL
-    SELECT f.senha_hash
+    SELECT f.senha_hash, p.nome
     FROM pessoa as p INNER JOIN funcionario as f
     ON p.codigo = f.codigo 
     WHERE p.email = ?
@@ -39,6 +39,8 @@
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$email]);
     $senha_hash = $stmt->fetch();
+
+    $_SESSION["nome"] = $senha_hash["nome"];
 
     $obj = new stdClass();
     if(password_verify($senha, $senha_hash['senha_hash'])) {
