@@ -1,7 +1,7 @@
 <?php
   include "../db/db_connection.php";
 
-  $especialidade = $_GET['especialidade'];
+  $especialidade = isset($_GET["especialidade"]) ? $_GET["especialidade"] : "";
   
   try {
     $sql = <<<SQL

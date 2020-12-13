@@ -1,7 +1,7 @@
 <?php
   include "../db/db_connection.php";
 
-  $cep = $_GET["cep"];
+  $cep = isset($_GET["cep"]) ? $_GET["cep"] : "";
 
   try {
     $sql = <<<SQL

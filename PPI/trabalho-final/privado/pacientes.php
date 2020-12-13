@@ -17,10 +17,17 @@
       background-color: #fff;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       line-height: 1.5rem;
+      position: relative;
+      min-height: 100vh;
     }
     
     a {
       text-decoration: none;
+    }
+
+    .container {
+      padding-top: 1rem;
+      padding-bottom: 4.5rem;
     }
 
     .card {

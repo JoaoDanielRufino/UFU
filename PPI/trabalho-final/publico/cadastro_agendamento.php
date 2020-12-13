@@ -1,12 +1,12 @@
 <?php
   include "../db/db_connection.php";
 
-  $nome_medico = $_POST["nome_medico"];
-  $data_agendamento = $_POST["date"];
-  $horario = $_POST["disponivel"];
-  $nome = $_POST["nome"];
-  $email = $_POST["email"];
-  $telefone = $_POST["telefone"];
+  $nome_medico = isset($_POST["nome_medico"]) ? $_POST["nome_medico"] : "";
+  $data_agendamento =isset($_POST["date"]) ? $_POST["date"] : "";
+  $horario = isset($_POST["disponivel"]) ? $_POST["disponivel"] : "";
+  $nome = isset($_POST["nome"]) ? $_POST["nome"] : "";
+  $email = isset($_POST["email"]) ? $_POST["email"] : "";
+  $telefone = isset($_POST["telefone"]) ? $_POST["telefone"] : "";
 
   try {
 
@@ -29,8 +29,13 @@
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$data_agendamento, $horario, $nome, $email, $telefone, $codigo_medico]);
     
-    echo "Agendamento realizado com sucesso!";
+    $obj = new stdClass();
+    $obj->response = "Agendamento realizado com sucesso";
+    echo json_encode($obj);
   } catch (Exception $e) {
-    exit('Falha ao cadastrar os dados: ' . $e->getMessage());
+    $obj = new stdClass();
+    $obj->response = "Falha ao cadastrar os dados: " . $e->getMessage();
+    echo json_encode($obj);
+    exit();
   }
 ?>

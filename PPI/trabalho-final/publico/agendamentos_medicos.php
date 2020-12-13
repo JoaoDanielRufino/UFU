@@ -1,7 +1,7 @@
 <?php
   include "../db/db_connection.php";
 
-  $nome_medico = $_GET['nome_medico'];
+  $nome_medico = isset($_GET["nome_medico"]) ? $_GET["nome_medico"] : "";
 
   try {
     

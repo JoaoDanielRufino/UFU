@@ -18,6 +18,8 @@
       background-color: #fff;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       line-height: 1.5rem;
+      position: relative;
+      min-height: 100vh;
     }
     
     a {
@@ -29,6 +31,11 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+    }
+
+    .container {
+      padding-top: 1rem;
+      padding-bottom: 4.5rem;
     }
 
     footer {

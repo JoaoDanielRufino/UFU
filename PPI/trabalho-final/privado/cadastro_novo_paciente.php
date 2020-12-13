@@ -1,17 +1,17 @@
 <?php
   include "../db/db_connection.php";
 
-  $nome = $_POST["nome"];
-  $email = $_POST["email"];
-  $telefone = $_POST["telefone"];
-  $cep = $_POST["cep"];
-  $logradouro = $_POST["logradouro"];
-  $bairro = $_POST["bairro"];
-  $cidade = $_POST["cidade"];
-  $estado = $_POST["estado"];
-  $peso = $_POST["peso"];
-  $altura = $_POST["altura"];
-  $sangue = $_POST["sangue"];
+  $nome = isset($_POST["nome"]) ? $_POST["nome"] : "";
+  $email = isset($_POST["email"]) ? $_POST["email"] : "";
+  $telefone = isset($_POST["telefone"]) ? $_POST["telefone"] : "";
+  $cep = isset($_POST["cep"]) ? $_POST["cep"] : "";
+  $logradouro = isset($_POST["logradouro"]) ? $_POST["logradouro"] : "";
+  $bairro = isset($_POST["bairro"]) ? $_POST["bairro"] : "";
+  $cidade = isset($_POST["cidade"]) ? $_POST["cidade"] : "";
+  $estado = isset($_POST["estado"]) ? $_POST["estado"] : "";
+  $peso = isset($_POST["peso"]) ? $_POST["peso"] : "";
+  $altura = isset($_POST["altura"]) ? $_POST["altura"] : "";
+  $sangue = isset($_POST["sangue"]) ? $_POST["sangue"] : "";
 
   try {
     $sql_pessoa = <<<SQL
@@ -38,9 +38,14 @@
     }
     
     $pdo->commit();
-    echo "Cadastro do funcionário realizado com sucesso!";
+    $obj = new stdClass();
+    $obj->response = "Cadastro do funcionário realizado com sucesso";
+    echo json_encode($obj);
   } catch (Exception $e) {
     $pdo->rollBack();
-    exit('Falha ao cadastrar os dados: ' . $e->getMessage());
+    $obj = new stdClass();
+    $obj->response = "Falha ao cadastrar os dados: " . $e->getMessage();
+    echo json_encode($obj);
+    exit();
   }
 ?>
