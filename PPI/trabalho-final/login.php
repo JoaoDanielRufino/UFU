@@ -1,6 +1,6 @@
 <?php
   session_start();
-  include "../db/db_connection.php";
+  include "./db/db_connection.php";
  
   $email = $senha = "";
 

@@ -1,5 +1,5 @@
 <?php
-  include "../db/db_connection.php";
+  include "./db/db_connection.php";
 
   try {
     $sql = <<<SQL

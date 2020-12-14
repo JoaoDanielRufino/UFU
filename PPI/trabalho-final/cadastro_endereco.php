@@ -1,5 +1,5 @@
 <?php
-  include "../db/db_connection.php";
+  include "./db/db_connection.php";
 
   $cep = isset($_POST["cep"]) ? $_POST["cep"] : "";
   $logradouro = isset($_POST["logradouro"]) ? $_POST["logradouro"] : "";

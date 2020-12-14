@@ -1,5 +1,5 @@
 <?php
-  include "../db/db_connection.php";
+  include "./db/db_connection.php";
 
   $nome_medico = isset($_POST["nome_medico"]) ? $_POST["nome_medico"] : "";
   $data_agendamento =isset($_POST["date"]) ? $_POST["date"] : "";

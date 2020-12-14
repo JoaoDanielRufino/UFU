@@ -1,5 +1,5 @@
 <?php
-  include "../db/db_connection.php";
+  include "./db/db_connection.php";
 
   $especialidade = isset($_GET["especialidade"]) ? $_GET["especialidade"] : "";
   
