@@ -44,6 +44,13 @@
       width: 100%;
       text-align: center;
     }
+
+    @media only screen and (max-width: 576px) {
+      nav {
+        display: flex;
+        flex-direction: column;
+      }
+    }
   </style>
 </head>
 <body>

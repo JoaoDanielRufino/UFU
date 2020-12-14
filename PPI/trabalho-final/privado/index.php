@@ -18,8 +18,10 @@
       background-color: #fff;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       line-height: 1.5rem;
+      position: relative;
+      min-height: 100vh;
     }
-    
+
     a {
       text-decoration: none;
     } 
@@ -28,11 +30,12 @@
       border-radius: 4px;
     }
 
-    main {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
+    .helper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 100px;
+      padding-bottom: 4.5rem;
     }
 
     .card {
@@ -46,6 +49,13 @@
       bottom: 0;
       width: 100%;
       text-align: center;
+    }
+
+    @media only screen and (max-width: 576px) {
+      nav {
+        display: flex;
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -71,14 +81,16 @@
     <button class="btn btn-outline-primary"><?= isset($_SESSION["nome"]) ? $_SESSION["nome"] : "Pessoa" ?></button>
   </header>
 
-  <main>
-    <div class="card">
-      <img src="../images/lawrence.png" class="card-img-top img-fluid" alt="logo">
-      <div class="card-body">
-        <p class="card-text">Seja bem vindo a página privada da Clínica Lawrence.</p>
+  <div class="helper">
+    <main>
+      <div class="card">
+        <img src="../images/lawrence.png" class="card-img-top img-fluid" alt="logo">
+        <div class="card-body">
+          <p class="card-text">Seja bem vindo a página privada da Clínica Lawrence.</p>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
+  </div>
 
   <footer class="footer mt-auto py-3 bg-light text-center">
     <p>&copy; 2020 Company, Inc.</p>
