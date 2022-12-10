@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "ibm-watson": "^4.1.0",
     "nodemon": "^1.19.0"
   }
